@@ -1,0 +1,34 @@
+.logIn-page-bg{
+    background-image: url('../../img/logInPage.jpg');
+    background-size: cover;
+}
+.from-input-customize input{
+    margin:  5px 0;
+    padding: 7px;
+    /* border-radius: 10px; */
+    width: 80%;
+    /* border: 3px solid red; */
+    border-image-source: linear-gradient(rgba(0, 51, 102, 0.5), rgba(0, 0, 51, 0.5));
+  border-width: 2pt;
+  border-image-slice: 1;
+
+}
+.google-sign-in-customize{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    padding: 5px 0;
+    cursor: pointer;
+}
+.google-sign-in-customize:hover{
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    border-bottom: 2px solid rgb(229, 255, 0);
+}
+.account-create-text{
+    font-size: 15px;
+    text-shadow: black;
+    cursor: pointer;
+    margin-top: 5px;
+}
+.account-create-text :hover {
+  border-bottom:2px solid blue !important;
+  transform: scale(1.02);
+}
