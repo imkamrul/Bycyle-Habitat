@@ -3,6 +3,7 @@ import { Container, Col, Button, Modal } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import useAuth from '../../hooks/useAuth';
 import { Row } from 'react-bootstrap';
+import axios from 'axios';
 
 const Review = () => {
     const { user } = useAuth();
@@ -17,6 +18,16 @@ const Review = () => {
         setNewReview(data)
         handleReviewModelShow()
     };
+    const handleReviewsToServer = () => {
+        handleReviewModelClose()
+        console.log(newReview)
+        axios.post('https://obscure-depths-70319.herokuapp.com/reviews', newReview)
+            .then(res => {
+                if (res.data.insertedId) {
+                    alert("Congrats Your review has been added successfully.")
+                }
+            })
+    }
     return (
         <Container className="py-5">
             <h4 className="fs-3 fw-light">Add a Review </h4>
@@ -25,7 +36,7 @@ const Review = () => {
                     <form onSubmit={handleSubmit(handelAddReview)} className="dashboard-from">
 
                         <input placeholder="Full Name" type="text" {...register("name", { required: true })} />
-                        <input placeholder="Email Adress" type="email"{...register("email", { required: true })} />
+                        <input placeholder="Photo" type="text"{...register("img", { required: true })} />
                         <input placeholder="Rating" type="number"{...register("rating", { required: true, min: "0", max: "5" })} />
 
                         <textarea placeholder="Description" type="text" {...register("description", { required: true })} />
@@ -45,7 +56,7 @@ const Review = () => {
                     <Button variant="secondary" onClick={handleReviewModelClose}>
                         Close
                     </Button>
-                    <Button variant="success"> Yes </Button>
+                    <Button variant="success" onClick={handleReviewsToServer}> Yes </Button>
                 </Modal.Footer>
             </Modal>
         </Container>

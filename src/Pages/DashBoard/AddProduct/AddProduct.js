@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import { Col, Container, Row, Button, Modal } from 'react-bootstrap';
 import { useForm } from "react-hook-form";
@@ -11,11 +12,20 @@ const AddProduct = () => {
     const handleProductModelClose = () => setProductModal(false);
     const handleProductModelShow = () => setProductModal(true);
     const handelAddProduct = data => {
-        console.log(data)
         reset();
         setNewProduct(data)
         handleProductModelShow()
     };
+    const handleProductToServer = () => {
+        handleProductModelClose()
+        console.log(newProduct)
+        axios.post('https://obscure-depths-70319.herokuapp.com/products', newProduct)
+            .then(res => {
+                if (res.data.insertedId) {
+                    alert("Congrats Your Product has been added successfully.")
+                }
+            })
+    }
 
     return (
         <Container className="py-5">
@@ -44,7 +54,7 @@ const AddProduct = () => {
                     <Button variant="secondary" onClick={handleProductModelClose}>
                         Close
                     </Button>
-                    <Button variant="success"> Yes </Button>
+                    <Button variant="success" onClick={handleProductToServer}> Yes </Button>
                 </Modal.Footer>
             </Modal>
         </Container>

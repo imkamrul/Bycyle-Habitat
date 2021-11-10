@@ -1,7 +1,14 @@
-import React from 'react';
-import { Card, Col, Container, Row } from 'react-bootstrap';
-
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { Card, Col, Container, Row, Spinner, Button } from 'react-bootstrap';
+import './Product.css'
 const Products = () => {
+    const [allProducts, setAllProducts] = useState({});
+    useEffect(() => {
+        axios.get('https://obscure-depths-70319.herokuapp.com/products')
+            .then(res => setAllProducts(res.data))
+    }, [])
+    console.log(allProducts)
     return (
 
         <Container className="my-5">
@@ -12,20 +19,24 @@ const Products = () => {
                 </Col>
             </Row>
             <Row xs={1} md={3} className="g-4">
-                {Array.from({ length: 3 }).map((_, idx) => (
-                    <Col>
-                        <Card>
-                            <Card.Img variant="top" src="holder.js/100px160" />
-                            <Card.Body>
-                                <Card.Title>Card title</Card.Title>
-                                <Card.Text>
-                                    This is a longer card with supporting text below as a natural
-                                    lead-in to additional content. This content is a little bit longer.
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                ))}
+
+                {allProducts.length ? allProducts.map(product => <Col
+                    key={product._id}>
+                    <Card className="bg-light product-background">
+                        <Card.Img variant="top" src={product.img} className="px-5 pt-3" />
+                        <Card.Body>
+                            <Card.Title>{product.name}</Card.Title>
+                            <p className="fs-5 mb-0">Price :  <span className="text-warning fw-bold">{product.price} Tk</span> </p>
+                            <Card.Text>
+                                {product.description}
+
+                            </Card.Text>
+                            <Button variant="dark">Buy Now</Button>
+                        </Card.Body>
+
+                    </Card>
+                </Col>) : <p>  <Spinner animation="border" variant="dark" /></p>}
+
             </Row>
         </Container>
 
