@@ -1,8 +1,8 @@
 import React from 'react';
-import { Col, Container, Image, Row } from 'react-bootstrap';
+import { Button, Image, Col, Container, Nav, Navbar, Row } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
-import Header from '../../Shared/Header/Header';
+
 import { useRouteMatch, Switch, Route } from "react-router-dom";
 import Pay from '../Pay/Pay';
 import MyOrders from '../MyOrders/MyOrders';
@@ -11,75 +11,81 @@ import AllOrders from '../AllOrders/AllOrders';
 import AddProduct from '../AddProduct/AddProduct';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import ManageProduct from '../ManageProduct/ManageProduct';
+import './Dashboard.css'
+import useAuth from '../../hooks/useAuth';
 const Dashboard = () => {
+    const { user, logout } = useAuth();
+    const { displayName, photoURL } = user;
     const { path, url } = useRouteMatch();
     return (
-        <div>
+        <div className="dashboard-bg">
             <Helmet>
                 <meta charSet="utf-8" />
                 <title>Dashboard</title>
             </Helmet>
-            <Header />
 
-            <Container>
-                <Row className="py-4" >
-                    <Col md={4}>
-
-                        <Image src="" style={{ height: "48px", width: "128px" }} />
-                    </Col>
-                    <Col md={8}>
-                        <h1 className="fs-2 fw-light">Manage Bookings, Add Service, Admin</h1>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col md={3} className="custom-my-booking-link panel-bg ps-4">
+            <Row className="g-0  ">
+                <Col md={2} className="custom-dashboard-link" >
+                    <h1 className="title-dashboard ">𝙱𝚒𝚌𝚢𝚌𝚕𝚎 <br /> 𝙷𝚊𝚋𝚒𝚝𝚊𝚝
+                    </h1>
+                    <hr className="custom-hr" />
+                    <Nav className="flex-column pb-3">
                         <Link to="/home"> <span><i className="fas fa-house-user"></i></span> Home</Link>
-                        <br />
                         <Link to={`${url}`}> <span><i className="fas fa-shopping-bag"></i></span> My Orders</Link>
-                        <br />
                         <Link to={`${url}/pay`}> <span><i className="fas fa-plus"></i></span> Payment</Link>
-                        <br />
                         <Link to={`${url}/review`}> <span><i className="fas fa-plus"></i></span> Review</Link>
-                        <br />
                         <Link to={`${url}/allOrders`}> <span><i className="fas fa-plus"></i></span> All Orders</Link>
-                        <br />
                         <Link to={`${url}/addProduct`}> <span><i className="fas fa-plus"></i></span>Add Product</Link>
-                        <br />
                         <Link to={`${url}/makeAdmin`}> <span><i className="fas fa-plus"></i></span> Make Admin </Link>
-                        <br />
                         <Link to={`${url}/manageProducts`}> <span><i className="fas fa-plus"></i></span>Manage Products</Link>
-                        <br />
+                    </Nav>
+                </Col>
+                <Col md={10} className="dashboard-contain-bg">
 
-                    </Col>
-                    <Col md={9}>
-                        <Switch>
-                            <Route exact path={path}>
-                                <MyOrders />
-                            </Route>
-                            <Route path={`${path}/pay`}>
-                                <Pay />
-                            </Route>
-                            <Route path={`${path}/review`}>
-                                <Review />
-                            </Route>
-                            <Route path={`${path}/allOrders`}>
-                                <AllOrders />
-                            </Route>
-                            <Route path={`${path}/addProduct`}>
-                                <AddProduct />
-                            </Route>
-                            <Route path={`${path}/makeAdmin`}>
-                                <MakeAdmin />
-                            </Route>
-                            <Route path={`${path}/manageProducts`}>
-                                <ManageProduct />
-                            </Route>
+                    <Row className="g-0 dashboard-header ">
+                        <Navbar bg="white" expand="md">
+                            <Container>
+                                <h3 className="fw-light fs-2">Dashboard</h3>
+                                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                                <Navbar.Collapse id="basic-navbar-nav">
+                                    <Nav className="ms-auto pe-5">
 
-                        </Switch>
-                    </Col>
-                </Row>
-            </Container>
-        </div>
+                                        <span className=" pt-2 fs-5 px-2 fw-lighter "> <Image className="user-picture" src={photoURL} roundedCircle /> {displayName}</span>
+                                        <Button variant="warning" onClick={logout} className="m-1 text-white">Log Out</Button>
+
+                                    </Nav>
+                                </Navbar.Collapse>
+                            </Container>
+                        </Navbar>
+                    </Row>
+                    <Switch>
+                        <Route exact path={path}>
+                            <MyOrders />
+                        </Route>
+                        <Route path={`${path}/pay`}>
+                            <Pay />
+                        </Route>
+                        <Route path={`${path}/review`}>
+                            <Review />
+                        </Route>
+                        <Route path={`${path}/allOrders`}>
+                            <AllOrders />
+                        </Route>
+                        <Route path={`${path}/addProduct`}>
+                            <AddProduct />
+                        </Route>
+                        <Route path={`${path}/makeAdmin`}>
+                            <MakeAdmin />
+                        </Route>
+                        <Route path={`${path}/manageProducts`}>
+                            <ManageProduct />
+                        </Route>
+
+                    </Switch>
+                </Col>
+            </Row>
+            {/* </Container> */}
+        </div >
     );
 };
 

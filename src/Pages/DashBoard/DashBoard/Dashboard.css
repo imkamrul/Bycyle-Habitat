@@ -1,0 +1,42 @@
+.dashboard-bg{
+background-color: #313A46;
+height: 100vh;
+}
+.dashboard-contain-bg{
+background-color: #F8F9FA;
+height: 100vh;
+}
+.custom-dashboard-link a{
+color: rgb(255, 255, 255);
+text-decoration: none;
+padding-left: 30px;
+padding-top: 5px;
+text-align: left;
+}
+.custom-dashboard-link a:hover{
+color: goldenrod;
+}
+.title-dashboard{
+    color: blanchedalmond;
+    padding-top:30px ;
+    font-size: 30px;
+    line-height: 35px;
+    text-align: left;
+    padding-left:30px ;
+    cursor: pointer;
+}
+.custom-hr{
+    color: goldenrod;
+    width: 80%;
+    margin: 5px auto;
+  border: 2px double goldenrod;
+}
+.dashboard-header{
+    /* height: 80px; */
+   padding-left: 50px;
+    /* padding-top: 30px; */
+    text-align: left;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  
+}

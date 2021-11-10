@@ -7,6 +7,7 @@ import LogIn from './Pages/LogIn/LogIn';
 import Dashboard from './Pages/DashBoard/DashBoard/Dashboard';
 import Cycles from './Pages/Cycles/Cycles';
 import PageNotFound from './Pages/PageNotFound/PageNotFound';
+import PrivateRoute from './Pages/PrivateRoute/PrivateRoute';
 function App() {
   return (
     <div className="App">
@@ -23,9 +24,9 @@ function App() {
             <Route path="/cycles">
               <Cycles />
             </Route>
-            <Route path="/dashboard">
+            <PrivateRoute path="/dashboard">
               <Dashboard />
-            </Route>
+            </PrivateRoute>
             <Route path="/login">
               <LogIn />
             </Route>
