@@ -8,15 +8,7 @@ const ContactUs = () => {
                 <Col>
                     <h4 className="fs-3"><span className="text-warning">CONTACT</span> WITH US</h4>
                     <p className="fs-5">Leave us your email address and we contact you back</p>
-                    {/* <div className="d-flex justify-content-center">
-                        <InputGroup size="lg" style={{ width: "50%" }} className="my-2" >
 
-                            <FormControl aria-label="Large"
-                                placeholder="Please enter your email address"
-                                aria-describedby="inputGroup-sizing-sm" />
-                            <Button variant="dark">SUBSCRIBE</Button>
-                        </InputGroup>
-                    </div> */}
                 </Col>
             </Row>
             <Row>

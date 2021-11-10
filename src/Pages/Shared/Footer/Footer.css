@@ -1,0 +1,19 @@
+.social-media-customize{
+    height: 35px ;
+    margin-top: 9px;
+    margin-right: 7px;
+    cursor: pointer;
+}
+.social-media-customize:hover{
+   transform: scale(1.05);
+   
+ 
+}
+.custom-footer-link{
+    cursor: pointer;
+    margin-bottom: 1px;
+}
+.custom-footer-link:hover{
+    transform: scale(1.02);
+   
+}
