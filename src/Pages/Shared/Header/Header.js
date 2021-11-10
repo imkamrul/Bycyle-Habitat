@@ -1,38 +1,41 @@
 import React from 'react';
-import { Container, Image, Nav, Navbar } from 'react-bootstrap';
+import { Container, Image, Nav, Navbar, Button } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import './Header.css'
-import users from '../../../img/5907.jpg'
-import logo from '../../../img/logo.png'
+import useAuth from '../../hooks/useAuth';
+
 const Header = () => {
+    const { user, logout } = useAuth();
+    const { displayName, photoURL } = user;
+
     const activeStyle = {
         fontWeight: "bold",
-        color: "red"
+        color: "#FFC107"
     }
     return (
-        <Navbar bg="light" expand="md">
+        <Navbar bg="dark" variant="dark" expand="md">
             <Container>
                 <Navbar.Brand as={NavLink} to="/">
-                    <img
-                        alt=""
-                        src={logo}
-                        width="90"
-                        height="35"
-                        className="d-inline-block align-top"
-                    />{' '}
-                    𝗧𝘄𝗼 𝗧𝗶𝗿𝗲𝘀
+
+                    𝙱𝚒𝚌𝚢𝚌𝚕𝚎 𝙷𝚊𝚋𝚒𝚝𝚊𝚝
                 </Navbar.Brand>
 
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto">
-                        <NavLink to="/home" activeStyle={activeStyle}>
+                        <NavLink to="/home" className="fs-4 pt-1" activeStyle={activeStyle}>
                             Home
                         </NavLink>
-                        <NavLink to="/logIN" activeStyle={activeStyle}>
+                        {/* <NavLink to="/logIN" activeStyle={activeStyle}>
                             Log In
-                        </NavLink>
-                        <p className="my-0"> <Image className="user-picture" src={users} roundedCircle /> <span>kamrul hasan</span> </p>
+                        </NavLink> */}
+
+
+                        {user.email ? <>    <span className=" text-light pt-2 fs-5 px-2 fw-lighter "> <Image className="user-picture" src={photoURL} roundedCircle /> {displayName}</span>
+                            <Button variant="warning" onClick={logout} className="m-1 text-white">Log Out</Button>
+                        </>
+                            :
+                            <NavLink to="/login"><Button variant="outline-info mt-1">Log In</Button></NavLink>}
 
                     </Nav>
                 </Navbar.Collapse>

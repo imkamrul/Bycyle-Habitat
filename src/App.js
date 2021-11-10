@@ -2,7 +2,7 @@ import './App.css';
 import AuthProvider from './Context/AuthProvider';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './Pages/Home/Home/Home';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import LogIn from './Pages/LogIn/LogIn';
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
             <Route path="/home">
               <Home />
             </Route>
-            <Route path="/logIN">
+            <Route path="/login">
               <LogIn />
             </Route>
           </Switch>
