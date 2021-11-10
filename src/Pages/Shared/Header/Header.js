@@ -26,9 +26,13 @@ const Header = () => {
                         <NavLink to="/home" className="fs-4 pt-1" activeStyle={activeStyle}>
                             Home
                         </NavLink>
-                        {/* <NavLink to="/logIN" activeStyle={activeStyle}>
-                            Log In
-                        </NavLink> */}
+                        <NavLink to="/cycles" className="fs-4 pt-1" activeStyle={activeStyle}>
+                            More Cycles
+                        </NavLink>
+                        <NavLink to="/dashboard" className="fs-4 pt-1" activeStyle={activeStyle}>
+                            Dashboard
+                        </NavLink>
+
 
 
                         {user.email ? <>    <span className=" text-light pt-2 fs-5 px-2 fw-lighter "> <Image className="user-picture" src={photoURL} roundedCircle /> {displayName}</span>
