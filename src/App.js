@@ -8,6 +8,7 @@ import Dashboard from './Pages/DashBoard/DashBoard/Dashboard';
 import Cycles from './Pages/Cycles/Cycles';
 import PageNotFound from './Pages/PageNotFound/PageNotFound';
 import PrivateRoute from './Pages/PrivateRoute/PrivateRoute';
+import ProductBuy from './Pages/ProductBuy/ProductBuy';
 function App() {
   return (
     <div className="App">
@@ -20,6 +21,9 @@ function App() {
             </Route>
             <Route path="/home">
               <Home />
+            </Route>
+            <Route path="/productBuy/:id">
+              <ProductBuy />
             </Route>
             <Route path="/cycles">
               <Cycles />

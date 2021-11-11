@@ -1,0 +1,7 @@
+.product-buy-form input,textarea{
+display: block;
+width: 90%;
+margin: 8px 0;
+padding: 5px;
+border-radius: 10px;
+}

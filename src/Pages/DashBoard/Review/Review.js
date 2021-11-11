@@ -13,7 +13,7 @@ const Review = () => {
     const handleReviewModelClose = () => setReviewModal(false);
     const handleReviewModelShow = () => setReviewModal(true);
     const handelAddReview = data => {
-        console.log(data)
+
         reset();
         setNewReview(data)
         handleReviewModelShow()

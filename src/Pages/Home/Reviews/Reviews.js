@@ -20,7 +20,7 @@ const Reviews = () => {
                 </Col>
             </Row>
             <Row xs={1} md={3} className="g-2 mt-4">
-                {allReviews.length ? allReviews.map(review => <Col
+                {allReviews?.length ? allReviews.map(review => <Col
                     key={review._id}>
                     <Card className="m-2 border-0 shadow-lg">
                         <div className=""><Image src={review.img} style={{ height: "100px", marginTop: "10px" }} /></div>
@@ -36,7 +36,7 @@ const Reviews = () => {
                             </Card.Text>
                         </Card.Body>
                     </Card>
-                </Col>) : <p>  <Spinner animation="border" variant="dark" /></p>}
+                </Col>) : <div>  <Spinner animation="border" variant="dark" /></div>}
             </Row>
         </Container>
     );

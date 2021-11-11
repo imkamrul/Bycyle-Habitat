@@ -1,14 +1,22 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Card, Col, Container, Row, Spinner, Button } from 'react-bootstrap';
+import { useHistory } from 'react-router';
 import './Product.css'
 const Products = () => {
     const [allProducts, setAllProducts] = useState({});
+    const history = useHistory();
     useEffect(() => {
-        axios.get('https://obscure-depths-70319.herokuapp.com/products')
+
+        axios.get('https://obscure-depths-70319.herokuapp.com/products?search=6')
             .then(res => setAllProducts(res.data))
     }, [])
-    console.log(allProducts)
+    const handleProductBuy = id => {
+        history.push(`/productBuy/${id}`)
+    }
+    const handleCyclePage = () => {
+        history.push('/cycles')
+    }
     return (
 
         <Container className="my-5">
@@ -23,21 +31,24 @@ const Products = () => {
                 {allProducts.length ? allProducts.map(product => <Col
                     key={product._id}>
                     <Card className="bg-light product-background">
-                        <Card.Img variant="top" src={product.img} className="px-5 pt-3" />
+                        <Card.Img variant="top" src={product.img} className="px-5 pt-3" style={{ height: "200px" }} />
                         <Card.Body>
                             <Card.Title>{product.name}</Card.Title>
                             <p className="fs-5 mb-0">Price :  <span className="text-warning fw-bold">{product.price} Tk</span> </p>
                             <Card.Text>
-                                {product.description}
+                                {product.description.slice(0, 135)}.
 
                             </Card.Text>
-                            <Button variant="dark">Buy Now</Button>
+                            <Button variant="dark" onClick={() => handleProductBuy(product._id)}>Buy Now</Button>
                         </Card.Body>
 
                     </Card>
-                </Col>) : <p>  <Spinner animation="border" variant="dark" /></p>}
+                </Col>) : <div>  <Spinner animation="border" variant="dark" /></div>
+
+                }
 
             </Row>
+            <Button variant="warning" className="my-3" onClick={handleCyclePage}>Explore More</Button>
         </Container>
 
     );
