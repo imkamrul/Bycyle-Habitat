@@ -1,10 +1,112 @@
-import React from 'react';
-
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { Container, Row, Col, Button, Card, ListGroup, Spinner, Modal } from 'react-bootstrap'
+import { useHistory } from 'react-router';
+import useAuth from '../../hooks/useAuth';
 const MyOrders = () => {
+    const { user } = useAuth();
+    const [myOrders, setMyOrders] = useState([]);
+    const [deleteOrder, SetDeleteOrder] = useState([])
+    const history = useHistory();
+    const [showOrderDeleteModel, setShowOrderDeleteModel] = useState(false);
+
+    const handleOrderDeleteModelClose = () => setShowOrderDeleteModel(false);
+    const handleOrderDeleteModelShow = (data) => {
+        SetDeleteOrder(data)
+        setShowOrderDeleteModel(true)
+    };
+    useEffect(() => {
+        axios.get(`https://obscure-depths-70319.herokuapp.com/myOrders?search=${user.email}`)
+            .then(res => setMyOrders(res.data))
+    }, [user])
+    const total = myOrders.reduce((previous, product) => previous + parseInt(product.price), 0);
+    const deleteMyOrder = id => {
+        handleOrderDeleteModelClose()
+        axios.delete(`https://obscure-depths-70319.herokuapp.com/orderDelete/${id}`)
+            .then(res => {
+                if (res.data.deletedCount) {
+                    alert("deleted successful");
+                    const updateMyOrder = myOrders.filter(order => order._id !== id);
+                    setMyOrders(updateMyOrder)
+                }
+            })
+    }
+    const paymentPage = () => {
+        history.push('dashboard/pay')
+    }
     return (
-        <div>
-            my orders page
-        </div>
+
+        <Container className="pt-5">
+            <Row className="d-flex  justify-content-center g-0">
+                <Col md={10}>
+                    <h4>My Order List : {myOrders.length}</h4>
+                    <Row className="text-start">
+                        <Col md={8} className="bg-white">
+                            <Row className="g-2">
+                                {myOrders.length ? myOrders.map(order => <Col
+                                    key={order._id} xs={12} md={6}>
+
+                                    <Card className="product-background">
+                                        <Card.Img variant="top" src={order.img} style={{ height: "200px" }} />
+                                        <Card.Body>
+                                            <Card.Title>{order.productName}</Card.Title>
+                                            <Card.Header>Name: {order.name}</Card.Header>
+                                            <ListGroup variant="flush">
+                                                <ListGroup.Item>
+                                                    Mobile : {order.mobile} <br />
+                                                    Address: {order.address}
+                                                </ListGroup.Item>
+
+                                                <ListGroup.Item>Price: {order.price} <i className=" text-warning"> TK</i>  <br /> Status: {order.status}</ListGroup.Item>
+                                                <ListGroup.Item><span className=""><Button variant="dark" className="my-1" onClick={() => handleOrderDeleteModelShow(order)}>Cancel It</Button></span>
+                                                </ListGroup.Item>
+
+                                            </ListGroup>
+                                        </Card.Body>
+
+                                    </Card>
+
+                                </Col>)
+
+                                    : <div><Spinner animation="border" variant="dark" /></div>
+                                }
+                            </Row>
+
+                            <Modal show={showOrderDeleteModel} onHide={handleOrderDeleteModelClose} backdrop="static" keyboard={false} >
+                                <Modal.Header closeButton>
+                                    <Modal.Title className="text-warning">Warning</Modal.Title>
+                                </Modal.Header>
+                                <Modal.Body>
+                                    Deleting <span className="fw-bold">{deleteOrder.productName}</span>  order. Are you sure?
+
+                                </Modal.Body>
+                                <Modal.Footer>
+                                    <Button variant="secondary" onClick={handleOrderDeleteModelClose}>
+                                        No
+                                    </Button>
+                                    <Button variant="danger" onClick={() => deleteMyOrder(deleteOrder._id)}>Yes</Button>
+                                </Modal.Footer>
+                            </Modal>
+                        </Col>
+                        <Col md={4} className="border-top  border-success ps-5">
+                            <h5 className="fs-3 fw-light text-center"> Summary</h5>
+                            <p className="mb-0">SubTotal : {total} Tk</p>
+                            <hr className="my-2" />
+                            <p className="mb-0">Shipping charge :100 Tk </p>
+                            <hr className="my-2" />
+                            <p className="mb-0">Discount : 0</p>
+                            <hr className="my-2" />
+                            <p className="mb-0">Total : $ {(total + 100).toFixed(2)}</p>
+                            <hr className="my-2" />
+                            <div className="text-end">
+                                <Button variant="success" onClick={paymentPage}>Payment</Button>
+                            </div>
+                        </Col>
+                    </Row>
+                </Col>
+            </Row>
+        </Container>
+
     );
 };
 

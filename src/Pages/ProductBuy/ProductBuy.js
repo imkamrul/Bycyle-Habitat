@@ -20,6 +20,7 @@ const ProductBuy = () => {
     const handleProductBuyModalShow = () => setShowProductBuyModal(true);
     const onSubmit = data => {
         data.status = " pending"
+        data.img = selectedProduct.img;
         setBuyingProduct(data)
         reset();
         handleProductBuyModalShow();
