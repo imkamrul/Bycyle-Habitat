@@ -22,9 +22,9 @@ function App() {
             <Route path="/home">
               <Home />
             </Route>
-            <Route path="/productBuy/:id">
+            <PrivateRoute path="/productBuy/:id">
               <ProductBuy />
-            </Route>
+            </PrivateRoute>
             <Route path="/cycles">
               <Cycles />
             </Route>

@@ -70,7 +70,7 @@ const useFirebase = () => {
     }
     const saveUserPut = (email, displayName) => {
         const user = { email, displayName };
-        axios.put('http://localhost:5000/users', user)
+        axios.put('https://obscure-depths-70319.herokuapp.com/users', user)
 
             .then()
     }

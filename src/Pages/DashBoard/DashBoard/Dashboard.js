@@ -13,8 +13,9 @@ import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import ManageProduct from '../ManageProduct/ManageProduct';
 import './Dashboard.css'
 import useAuth from '../../hooks/useAuth';
+import AdminRoute from '../../AdminRoute/AdminRoute';
 const Dashboard = () => {
-    const { user, logout } = useAuth();
+    const { user, logout, admin } = useAuth();
     const { displayName, photoURL } = user;
     const { path, url } = useRouteMatch();
     return (
@@ -31,13 +32,20 @@ const Dashboard = () => {
                     <hr className="custom-hr" />
                     <Nav className="flex-column pb-3">
                         <Link to="/home"> <span><i className="fas fa-house-user"></i></span> Home</Link>
-                        <Link to={`${url}`}> <span><i className="fas fa-shopping-bag"></i></span> My Orders</Link>
-                        <Link to={`${url}/pay`}> <span><i className="fas fa-plus"></i></span> Payment</Link>
-                        <Link to={`${url}/review`}> <span><i className="fas fa-plus"></i></span> Review</Link>
-                        <Link to={`${url}/allOrders`}> <span><i className="fas fa-plus"></i></span> All Orders</Link>
-                        <Link to={`${url}/addProduct`}> <span><i className="fas fa-plus"></i></span>Add Product</Link>
-                        <Link to={`${url}/makeAdmin`}> <span><i className="fas fa-plus"></i></span> Make Admin </Link>
-                        <Link to={`${url}/manageProducts`}> <span><i className="fas fa-plus"></i></span>Manage Products</Link>
+                        {!admin ? <>
+                            <Link to={`${url}`}> <span><i className="fas fa-shopping-bag"></i></span> My Orders</Link>
+                            <Link to={`${url}/pay`}> <span><i className="fas fa-plus"></i></span> Payment</Link>
+                            <Link to={`${url}/review`}> <span><i className="fas fa-plus"></i></span> Review</Link>
+                        </>
+                            :
+                            <>
+                                <Link to={`${url}/allOrders`}> <span><i className="fas fa-plus"></i></span> All Orders</Link>
+                                <Link to={`${url}/addProduct`}> <span><i className="fas fa-plus"></i></span>Add Product</Link>
+                                <Link to={`${url}/makeAdmin`}> <span><i className="fas fa-plus"></i></span> Make Admin </Link>
+                                <Link to={`${url}/manageProducts`}> <span><i className="fas fa-plus"></i></span>Manage Products</Link>
+                            </>
+                        }
+
                     </Nav>
                 </Col>
                 <Col md={10} className="dashboard-contain-bg">
@@ -60,7 +68,7 @@ const Dashboard = () => {
                     </Row>
                     <Switch>
                         <Route exact path={path}>
-                            <MyOrders />
+                            {!admin ? <MyOrders /> : <AllOrders />}
                         </Route>
                         <Route path={`${path}/pay`}>
                             <Pay />
@@ -71,15 +79,15 @@ const Dashboard = () => {
                         <Route path={`${path}/allOrders`}>
                             <AllOrders />
                         </Route>
-                        <Route path={`${path}/addProduct`}>
+                        <AdminRoute path={`${path}/addProduct`}>
                             <AddProduct />
-                        </Route>
-                        <Route path={`${path}/makeAdmin`}>
+                        </AdminRoute>
+                        <AdminRoute path={`${path}/makeAdmin`}>
                             <MakeAdmin />
-                        </Route>
-                        <Route path={`${path}/manageProducts`}>
+                        </AdminRoute>
+                        <AdminRoute path={`${path}/manageProducts`}>
                             <ManageProduct />
-                        </Route>
+                        </AdminRoute>
 
                     </Switch>
                 </Col>

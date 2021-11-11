@@ -9,8 +9,8 @@ const Header = () => {
     const { displayName, photoURL } = user;
 
     const activeStyle = {
-        fontWeight: "bold",
-        color: "#FFC107"
+        fontWeight: "bold"
+        // color: "#FFC107"
     }
     return (
         <Navbar bg="dark" variant="dark" expand="md">
@@ -27,12 +27,12 @@ const Header = () => {
                             Home
                         </NavLink>
                         <NavLink to="/cycles" className="fs-4 pt-1" activeStyle={activeStyle}>
-                            More Cycles
+                            Explore More
                         </NavLink>
-                        <NavLink to="/dashboard" className="fs-4 pt-1" activeStyle={activeStyle}>
+                        {user.emai && <NavLink to="/dashboard" className="fs-4 pt-1" activeStyle={activeStyle}>
                             Dashboard
                         </NavLink>
-
+                        }
 
 
                         {user.email ? <>    <span className=" text-light pt-2 fs-5 px-2 fw-lighter "> <Image className="user-picture" src={photoURL} roundedCircle /> {displayName}</span>

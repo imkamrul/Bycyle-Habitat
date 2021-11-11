@@ -9,7 +9,7 @@ import Header from '../Shared/Header/Header';
 import { useForm } from "react-hook-form";
 import './ProductBuy.css'
 const ProductBuy = () => {
-    const { user } = useAuth();
+    const { user, admin } = useAuth();
     const { id } = useParams();
     const [selectedProduct, setSelectedProduct] = useState([]);
     const history = useHistory();
@@ -38,7 +38,11 @@ const ProductBuy = () => {
             .then(res => {
                 if (res.data.insertedId) {
                     alert("Congrats Your order has been added successfully.")
-                    history.push('/dashboard')
+                    if (!admin) {
+                        history.push('/dashboard')
+                    } else (
+                        history.push('/home')
+                    )
 
                 }
             })
