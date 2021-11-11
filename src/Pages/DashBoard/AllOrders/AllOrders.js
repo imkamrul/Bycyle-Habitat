@@ -66,17 +66,19 @@ const AllOrders = () => {
                 </div>
                 <Row className="heading g-0 py-3">
                     <Col md={3} xs={6}><h3 className="mb-0 fs-5">Customer Name & Email</h3></Col>
-                    <Col md={3} xs={6}><h3 className="mb-0 fs-5">Product Name</h3></Col>
+                    <Col md={2} xs={6}><h3 className="mb-0 fs-5">Product Name</h3></Col>
+                    <Col md={1} xs={6}><h3 className="mb-0 fs-5">Order Date</h3></Col>
                     <Col md={2} xs={6}><h3 className="mb-0 fs-5">Product Price</h3></Col>
-                    <Col md={2} xs={6}><h3 className="mb-0 fs-5">Status</h3></Col>
+                    <Col md={1} xs={6}><h3 className="mb-0 fs-5">Status</h3></Col>
                     <Col md={1} xs={6}><h3 className="mb-0 text-center fs-5">Action</h3></Col>
-                    <Col md={1} xs={6}><h3 className="mb-0 text-center fs-5">Delete</h3></Col>
+                    <Col md={2} xs={6}><h3 className="mb-0 text-center fs-5">Delete</h3></Col>
                 </Row>
                 {allOrders.length ? allOrders.map(order => <Row
                     key={order._id}
                     className="user-booking-detail g-0">
                     <Col md={3} xs={12}><h5 className="mb-0 mt-2 fs-6 text-start ps-3"> Name: {order.name} <br />Email: {order.email}</h5></Col>
-                    <Col md={3} xs={12}><h5 className="mb-0 mt-2  fs-6 ">{order.productName}</h5></Col>
+                    <Col md={2} xs={12}><h5 className="mb-0 mt-2  fs-6 ">{order.productName}</h5></Col>
+                    <Col md={1} xs={12}><h5 className="mb-0 mt-2  fs-6 ">{order.orderData}</h5></Col>
                     <Col md={2} xs={6}><h5 className="mb-0 mt-2 fs-6 ">{order.price} Tk</h5></Col>
                     <Col md={1} xs={6}><h5 className="mb-0 mt-2 fs-6 ">{order.status} </h5></Col>
                     <Col md={1} xs={6}>

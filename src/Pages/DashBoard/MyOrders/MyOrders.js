@@ -57,7 +57,10 @@ const MyOrders = () => {
                                                     Address: {order.address}
                                                 </ListGroup.Item>
 
-                                                <ListGroup.Item>Price: {order.price} <i className=" text-warning"> TK</i>  <br /> Status: {order.status}</ListGroup.Item>
+                                                <ListGroup.Item>Price: {order.price} <i className=" text-warning"> TK</i>  <br /> Status: {order.status}
+                                                    <br />
+                                                    Order Date : {order.orderData}
+                                                </ListGroup.Item>
                                                 <ListGroup.Item><span className=""><Button variant="dark" className="my-1" onClick={() => handleOrderDeleteModelShow(order)}>Cancel It</Button></span>
                                                 </ListGroup.Item>
 

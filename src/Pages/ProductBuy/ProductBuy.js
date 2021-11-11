@@ -19,8 +19,10 @@ const ProductBuy = () => {
     const handleProductBuyModalClose = () => setShowProductBuyModal(false);
     const handleProductBuyModalShow = () => setShowProductBuyModal(true);
     const onSubmit = data => {
-        data.status = " pending"
+        const orderData = new Date();
+        data.status = "pending"
         data.img = selectedProduct.img;
+        data.orderData = orderData.toLocaleDateString();
         setBuyingProduct(data)
         reset();
         handleProductBuyModalShow();
