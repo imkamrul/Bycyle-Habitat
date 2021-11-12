@@ -8,9 +8,9 @@ const AllOrders = () => {
     const { user } = useAuth();
     const [allOrders, setAllOrders] = useState([])
     const [orderUpdate, setOrderUpdate] = useState([]);
-    const [uptadeModal, setUptadeModal] = useState(false);
-    const closeUpdateModal = () => setUptadeModal(false);
-    const showUpdateModal = () => setUptadeModal(true);
+    const [updateModal, setUpdateModal] = useState(false);
+    const closeUpdateModal = () => setUpdateModal(false);
+    const showUpdateModal = () => setUpdateModal(true);
     const handleUpdate = (data) => {
         setOrderUpdate(data)
         showUpdateModal();
@@ -58,11 +58,11 @@ const AllOrders = () => {
     return (
         <div>
             <Container className="py-2 px-5">
-                {/* <h1 className="text-center py-2"> All Orders</h1> */}
-                <div className="text-start">
-                    <Button variant="light" className="mx-3 mb-4" onClick={() => handleOrderCatagories("")}>All Orders</Button>
-                    <Button variant="light" className="mx-3 mb-4" onClick={() => handleOrderCatagories("pending")}>Pending Orders</Button>
-                    <Button variant="light" className="mx-3 mb-4" onClick={() => handleOrderCatagories("shipped")}>Shipped orders</Button>
+
+                <div className="text-start mt-3 ">
+                    <Button variant="light" className="mx-3 mb-4 fs-5" onClick={() => handleOrderCatagories("")}>All Orders</Button>
+                    <Button variant="light" className="mx-3 mb-4 fs-5" onClick={() => handleOrderCatagories("pending")}>Pending Orders</Button>
+                    <Button variant="light" className="mx-3 mb-4 fs-5" onClick={() => handleOrderCatagories("shipped")}>Shipped orders</Button>
                 </div>
                 <Row className="heading g-0 py-3">
                     <Col md={3} xs={6}><h3 className="mb-0 fs-5">Customer Name & Email</h3></Col>
@@ -92,7 +92,7 @@ const AllOrders = () => {
                     : <p> No data</p>
                 }
             </Container>
-            <Modal show={uptadeModal} onHide={closeUpdateModal}>
+            <Modal show={updateModal} onHide={closeUpdateModal}>
                 <Modal.Header closeButton>
                     <Modal.Title>Hello {user.displayName}</Modal.Title>
                 </Modal.Header>
@@ -105,7 +105,7 @@ const AllOrders = () => {
                             <option value="shipped">Shipped</option>
                         </select>
 
-                        <Button variant="primary" type="submit" style={{ padding: "5px", marginLeft: "20px" }}>
+                        <Button variant="primary" type="submit" style={{ padding: "5px", marginLeft: "20px", marginTop: "-10px" }}>
                             Save Changes
                         </Button>
                     </form>

@@ -14,6 +14,7 @@ import ManageProduct from '../ManageProduct/ManageProduct';
 import './Dashboard.css'
 import useAuth from '../../hooks/useAuth';
 import AdminRoute from '../../AdminRoute/AdminRoute';
+import PrivateRoute from '../../PrivateRoute/PrivateRoute';
 const Dashboard = () => {
     const { user, logout, admin } = useAuth();
     const { displayName, photoURL } = user;
@@ -31,18 +32,19 @@ const Dashboard = () => {
                     </h1>
                     <hr className="custom-hr" />
                     <Nav className="flex-column pb-3">
-                        <Link to="/home"> <span><i className="fas fa-house-user"></i></span> Home</Link>
+                        <Link to="/home"> <span><i className="fas fa-house-user me-2"></i></span> Home</Link>
                         {!admin ? <>
-                            <Link to={`${url}`}> <span><i className="fas fa-shopping-bag"></i></span> My Orders</Link>
-                            <Link to={`${url}/pay`}> <span><i className="fas fa-plus"></i></span> Payment</Link>
-                            <Link to={`${url}/review`}> <span><i className="fas fa-plus"></i></span> Review</Link>
+
+                            <Link to={`${url}`}> <span><i className="fas fa-shopping-bag me-2"></i></span> My Orders</Link>
+                            <Link to={`${url}/pay`}> <span><i className="fab fa-cc-amazon-pay me-2"></i></span> Payment</Link>
+                            <Link to={`${url}/review`}> <span><i className="fas fa-star-half-alt me-2"></i></span> Review</Link>
                         </>
                             :
                             <>
-                                <Link to={`${url}/allOrders`}> <span><i className="fas fa-plus"></i></span> All Orders</Link>
-                                <Link to={`${url}/addProduct`}> <span><i className="fas fa-plus"></i></span>Add Product</Link>
-                                <Link to={`${url}/makeAdmin`}> <span><i className="fas fa-plus"></i></span> Make Admin </Link>
-                                <Link to={`${url}/manageProducts`}> <span><i className="fas fa-plus"></i></span>Manage Products</Link>
+                                <Link to={`${url}/allOrders`}> <span><i className="fas fa-shopping-cart me-2"></i></span> All Orders</Link>
+                                <Link to={`${url}/addProduct`}> <span><i className="fas fa-plus me-2"></i></span>Add Product</Link>
+                                <Link to={`${url}/makeAdmin`}> <span><i className="fas fa-user-cog me-2"></i></span> Make Admin </Link>
+                                <Link to={`${url}/manageProducts`}> <span><i className="fab fa-product-hunt me-2"></i></span>Manage Products</Link>
                             </>
                         }
 
@@ -67,18 +69,18 @@ const Dashboard = () => {
                         </Navbar>
                     </Row>
                     <Switch>
-                        <Route exact path={path}>
+                        <PrivateRoute exact path={path}>
                             {!admin ? <MyOrders /> : <AllOrders />}
-                        </Route>
+                        </PrivateRoute>
                         <Route path={`${path}/pay`}>
                             <Pay />
                         </Route>
-                        <Route path={`${path}/review`}>
+                        <PrivateRoute path={`${path}/review`}>
                             <Review />
-                        </Route>
-                        <Route path={`${path}/allOrders`}>
+                        </PrivateRoute>
+                        <AdminRoute path={`${path}/allOrders`}>
                             <AllOrders />
-                        </Route>
+                        </AdminRoute>
                         <AdminRoute path={`${path}/addProduct`}>
                             <AddProduct />
                         </AdminRoute>

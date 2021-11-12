@@ -9,8 +9,8 @@ const Header = () => {
     const { displayName, photoURL } = user;
 
     const activeStyle = {
-        fontWeight: "bold"
-        // color: "#FFC107"
+        fontWeight: "bold",
+        color: "#0DCAF0"
     }
     return (
         <Navbar bg="dark" variant="dark" expand="md" sticky="top">

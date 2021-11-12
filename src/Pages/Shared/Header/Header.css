@@ -4,6 +4,10 @@ nav a{
 color: white;
     font-size: 18px;
 }
+nav a:hover{
+ border-bottom: 1px solid #0DCAF0;
+ color: #0DCAF0;
+}
 .user-picture{
     height: 30px;
 }

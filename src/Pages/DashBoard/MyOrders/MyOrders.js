@@ -39,40 +39,46 @@ const MyOrders = () => {
         <Container className="pt-5">
             <Row className="d-flex  justify-content-center g-0">
                 <Col md={10}>
-                    <h4>My Order List : {myOrders.length}</h4>
+
                     <Row className="text-start">
+                        <h4 className="my-3">My Orders ({myOrders.length})</h4>
                         <Col md={8} className="bg-white">
-                            <Row className="g-2">
+                            <Row className="g-2 pt-4">
                                 {myOrders.length ? myOrders.map(order => <Col
-                                    key={order._id} xs={12} md={6}>
+                                    key={order._id} xs={12} className="mb-2" >
 
                                     <Card className="product-background">
-                                        <Card.Img variant="top" src={order.img} style={{ height: "200px" }} />
-                                        <Card.Body>
-                                            <Card.Title>{order.productName}</Card.Title>
-                                            <Card.Header>Name: {order.name}</Card.Header>
-                                            <ListGroup variant="flush">
-                                                <ListGroup.Item>
-                                                    Mobile : {order.mobile} <br />
-                                                    Address: {order.address}
-                                                </ListGroup.Item>
+                                        <Row className="g-0">
+                                            <Col md={6}>
+                                                <Card.Img variant="top" src={order.img} style={{ height: "225px" }} />
+                                                <Card.Title className="py-2 ps-3">{order.productName}</Card.Title>
+                                            </Col>
+                                            <Col md={6}>
+                                                <Card.Body>
 
-                                                <ListGroup.Item>Price: {order.price} <i className=" text-warning"> TK</i>  <br /> Status: {order.status}
-                                                    <br />
-                                                    Order Date : {order.orderData}
-                                                </ListGroup.Item>
-                                                <ListGroup.Item><span className=""><Button variant="dark" className="my-1" onClick={() => handleOrderDeleteModelShow(order)}>Cancel It</Button></span>
-                                                </ListGroup.Item>
-
-                                            </ListGroup>
-                                        </Card.Body>
-
+                                                    <Card.Header>Name: {order.name}</Card.Header>
+                                                    <ListGroup variant="flush">
+                                                        <ListGroup.Item>
+                                                            Mobile : {order.mobile} <br />
+                                                            Address: {order.address}
+                                                        </ListGroup.Item>
+                                                        <ListGroup.Item>Price: {order.price} <i className=" text-warning"> TK</i>  <br /> Status: {order.status}
+                                                            <br />
+                                                            Order Date : {order.orderData}
+                                                        </ListGroup.Item>
+                                                        <ListGroup.Item><span className=""><Button variant="danger" className="my-1" onClick={() => handleOrderDeleteModelShow(order)}>Cancel It</Button></span>
+                                                        </ListGroup.Item>
+                                                    </ListGroup>
+                                                </Card.Body>
+                                            </Col>
+                                        </Row>
                                     </Card>
 
                                 </Col>)
 
-                                    : <div><Spinner animation="border" variant="dark" /></div>
+                                    : <p className="text-center fs-5">You haven't ordered yet</p>
                                 }
+
                             </Row>
 
                             <Modal show={showOrderDeleteModel} onHide={handleOrderDeleteModelClose} backdrop="static" keyboard={false} >
@@ -80,7 +86,7 @@ const MyOrders = () => {
                                     <Modal.Title className="text-warning">Warning</Modal.Title>
                                 </Modal.Header>
                                 <Modal.Body>
-                                    Deleting <span className="fw-bold">{deleteOrder.productName}</span>  order. Are you sure?
+                                    Deleting <span className="fw-bold">{deleteOrder.productName}</span> from  orders. Are you sure?
 
                                 </Modal.Body>
                                 <Modal.Footer>

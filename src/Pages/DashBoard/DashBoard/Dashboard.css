@@ -14,10 +14,10 @@ padding-top: 5px;
 text-align: left;
 }
 .custom-dashboard-link a:hover{
-color: goldenrod;
+color: #0DCAF0;
 }
 .title-dashboard{
-    color: blanchedalmond;
+    color: rgb(255, 255, 255);
     padding-top:30px ;
     font-size: 30px;
     line-height: 35px;
@@ -29,12 +29,13 @@ color: goldenrod;
     color: goldenrod;
     width: 80%;
     margin: 5px auto;
-  border: 2px double goldenrod;
+  border: 2px double #0DCAF0;
 }
 .dashboard-header{
     /* height: 80px; */
    padding-left: 50px;
     /* padding-top: 30px; */
+    
     text-align: left;
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
