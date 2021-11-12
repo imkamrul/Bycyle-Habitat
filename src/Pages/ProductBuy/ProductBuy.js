@@ -50,11 +50,11 @@ const ProductBuy = () => {
     return (
         <div>
             <Helmet>
-                <title>Cycle Buying</title>
+                <title>Purchase</title>
             </Helmet>
 
             <Header />
-            <Container>
+            {selectedProduct.name && <Container>
                 <Row className="my-5">
                     <Col md={8}>
                         <Row className="product-background">
@@ -87,7 +87,7 @@ const ProductBuy = () => {
                             : <p>Your form is loading</p>
                     }
                 </Row>
-            </Container>
+            </Container>}
             <Modal
                 show={showProductBuyModal}
                 onHide={handleProductBuyModalClose}

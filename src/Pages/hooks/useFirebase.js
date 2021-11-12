@@ -12,7 +12,7 @@ const useFirebase = () => {
     const [admin, setAdmin] = useState(false);
     const auth = getAuth();
     const googleProvider = new GoogleAuthProvider();
-    const registerUser = (email, password, name, history, img) => {
+    const registerUser = (email, password, name, history, img, location) => {
         setIsLoading(true);
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
@@ -26,9 +26,11 @@ const useFirebase = () => {
                     displayName: name,
                     photoURL: img
                 }).then(() => {
+                    const destination = location?.state?.from || '/';
+                    history.replace(destination);
                 }).catch((error) => {
                 });
-                history.replace('/');
+                // history.replace('/');
             })
             .catch((error) => {
                 setAuthError(error.message);

@@ -19,7 +19,7 @@ const LogIn = () => {
     };
     const handleRegister = data => {
         reset();
-        registerUser(data.email, data.password, data.name, history, data.img);
+        registerUser(data.email, data.password, data.name, history, data.img, location);
     };
     const [page, setPage] = useState(true);
     // log in page & register page toggle 

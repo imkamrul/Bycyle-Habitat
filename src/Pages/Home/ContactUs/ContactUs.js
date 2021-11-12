@@ -5,9 +5,9 @@ const ContactUs = () => {
     return (
         <Container className="my-5">
             <Row>
-                <Col className="mb-4">
+                <Col className="my-3">
                     <h4 className="fs-3"><span className="text-warning">CONTACT</span> WITH US</h4>
-                    <p className="fs-5">Leave us your information and we contact you back</p>
+
 
                 </Col>
             </Row>

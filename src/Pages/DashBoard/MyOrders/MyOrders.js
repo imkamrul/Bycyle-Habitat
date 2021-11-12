@@ -62,7 +62,7 @@ const MyOrders = () => {
                                                             Mobile : {order.mobile} <br />
                                                             Address: {order.address}
                                                         </ListGroup.Item>
-                                                        <ListGroup.Item>Price: {order.price} <i className=" text-warning"> TK</i>  <br /> Status: {order.status}
+                                                        <ListGroup.Item>Price: {order.price} Tk<br /> Status: {order.status}
                                                             <br />
                                                             Order Date : {order.orderData}
                                                         </ListGroup.Item>
@@ -101,11 +101,11 @@ const MyOrders = () => {
                             <h5 className="fs-3 fw-light text-center"> Summary</h5>
                             <p className="mb-0">SubTotal : {total} Tk</p>
                             <hr className="my-2" />
-                            <p className="mb-0">Shipping charge :100 Tk </p>
+                            <p className="mb-0">Shipping charge : 00 </p>
                             <hr className="my-2" />
-                            <p className="mb-0">Discount : 0</p>
+                            <p className="mb-0">Discount : 00</p>
                             <hr className="my-2" />
-                            <p className="mb-0">Total : $ {(total + 100).toFixed(2)}</p>
+                            <p className="mb-0">Total : $ {(total).toFixed(2)}</p>
                             <hr className="my-2" />
                             <div className="text-end">
                                 <Button variant="success" onClick={paymentPage}>Payment</Button>

@@ -15,7 +15,7 @@ const Header = () => {
     return (
         <Navbar bg="dark" variant="dark" expand="md" sticky="top">
             <Container>
-                <Navbar.Brand as={NavLink} to="/">
+                <Navbar.Brand as={NavLink} to="/" className="fs-4">
 
                     𝙱𝚒𝚌𝚢𝚌𝚕𝚎 𝙷𝚊𝚋𝚒𝚝𝚊𝚝
                 </Navbar.Brand>
@@ -27,7 +27,7 @@ const Header = () => {
                             Home
                         </NavLink>
                         <NavLink to="/cycles" className="fs-4 pt-1" activeStyle={activeStyle}>
-                            Explore More
+                            Explore
                         </NavLink>
                         {user.email && <NavLink to="/dashboard" className="fs-4 pt-1" activeStyle={activeStyle}>
                             Dashboard

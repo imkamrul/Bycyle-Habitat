@@ -8,6 +8,7 @@ import ContactUs from '../ContactUs/ContactUs';
 import Offer from '../Offer/Offer';
 import Products from '../Products/Products';
 import Reviews from '../Reviews/Reviews';
+import Servicing from '../Servicing/Servicing';
 
 const Home = () => {
 
@@ -23,6 +24,7 @@ const Home = () => {
             <Banner></Banner>
             <Products></Products>
             <Offer></Offer>
+            <Servicing />
             <Blogs></Blogs>
             <Reviews></Reviews>
             <ContactUs></ContactUs>

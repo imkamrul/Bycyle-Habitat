@@ -6,11 +6,11 @@ import blog3 from '../../../img/blog3.png'
 
 const Blogs = () => {
     return (
-        <Container>
+        <Container className="my-5">
             <Row>
                 <Col>
-                    <h4 className="fs-3">  <span className="text-warning">FROM</span>  BLOGS</h4>
-                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                    <h4 className="fs-3 my-3">FROM  <span className="text-warning">BLOGS</span></h4>
+
                 </Col>
             </Row>
             <Row className="my-4 text-start">
