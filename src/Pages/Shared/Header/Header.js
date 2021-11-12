@@ -2,12 +2,11 @@ import React from 'react';
 import { Container, Image, Nav, Navbar, Button } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import './Header.css'
-import useAuth from '../../hooks/useAuth';
+import useAuth from '../../../hooks/useAuth'
 
 const Header = () => {
     const { user, logout } = useAuth();
     const { displayName, photoURL } = user;
-
     const activeStyle = {
         fontWeight: "bold",
         color: "#0DCAF0"

@@ -1,8 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Col, Container, Row, Button, Image, Modal, Form } from 'react-bootstrap';
-import useAuth from '../../hooks/useAuth';
-
+import useAuth from '../../../hooks/useAuth';
 const ManageProduct = () => {
     const { user } = useAuth();
     const [selectedProduct, setSelectedProduct] = useState([])
@@ -89,7 +88,7 @@ const ManageProduct = () => {
                     </Col>
 
                 </Row>)
-                    : <p> No data</p>
+                    : <p className="fs-5"> No Product</p>
                 }
             </Container>
             <Modal show={showupdatingMOdal} onHide={handleupdatingMOdalClose} backdrop="static" keyboard={false}>

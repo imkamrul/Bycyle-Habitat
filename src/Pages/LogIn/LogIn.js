@@ -5,7 +5,7 @@ import googleLogo from '../../img/gogle.png'
 import './LogIn.css'
 import { useForm } from "react-hook-form";
 import { Helmet } from 'react-helmet';
-import useAuth from '../hooks/useAuth';
+import useAuth from '../../hooks/useAuth';
 import { useHistory, useLocation } from 'react-router';
 const LogIn = () => {
     const { loginUser, signInWithGoogle, registerUser } = useAuth();

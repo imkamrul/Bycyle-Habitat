@@ -2,8 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { Col, Container, Row, Modal, Button } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import useAuth from '../../hooks/useAuth';
-
+import useAuth from '../../../hooks/useAuth';
 const MakeAdmin = () => {
     const { user, admin } = useAuth();
     console.log(admin)

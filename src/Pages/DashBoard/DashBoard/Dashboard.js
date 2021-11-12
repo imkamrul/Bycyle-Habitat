@@ -2,7 +2,6 @@ import React from 'react';
 import { Button, Image, Col, Container, Nav, Navbar, Row } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
-
 import { useRouteMatch, Switch, Route } from "react-router-dom";
 import Pay from '../Pay/Pay';
 import MyOrders from '../MyOrders/MyOrders';
@@ -12,9 +11,9 @@ import AddProduct from '../AddProduct/AddProduct';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import ManageProduct from '../ManageProduct/ManageProduct';
 import './Dashboard.css'
-import useAuth from '../../hooks/useAuth';
-import AdminRoute from '../../AdminRoute/AdminRoute';
-import PrivateRoute from '../../PrivateRoute/PrivateRoute';
+import AdminRoute from '../../CustomRoute/AdminRoute/AdminRoute';
+import PrivateRoute from '../../CustomRoute/PrivateRoute/PrivateRoute';
+import useAuth from '../../../hooks/useAuth';
 const Dashboard = () => {
     const { user, logout, admin } = useAuth();
     const { displayName, photoURL } = user;

@@ -1,8 +1,9 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Container, Row, Col, Button, Card, ListGroup, Spinner, Modal } from 'react-bootstrap'
+import { Container, Row, Col, Button, Card, ListGroup, Modal } from 'react-bootstrap'
 import { useHistory } from 'react-router';
-import useAuth from '../../hooks/useAuth';
+import useAuth from '../../../hooks/useAuth';
+
 const MyOrders = () => {
     const { user } = useAuth();
     const [myOrders, setMyOrders] = useState([]);

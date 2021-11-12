@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Col, Container, Row, Button, Modal } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import useAuth from '../../hooks/useAuth';
+import useAuth from '../../../hooks/useAuth';
 import './AllOrder.css'
 const AllOrders = () => {
     const { user } = useAuth();
@@ -89,7 +89,7 @@ const AllOrders = () => {
                     </Col>
 
                 </Row>)
-                    : <p> No data</p>
+                    : <p className="text-center fs-5"> No Orders</p>
                 }
             </Container>
             <Modal show={updateModal} onHide={closeUpdateModal}>

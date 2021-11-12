@@ -1,9 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, updateProfile, signOut } from "firebase/auth";
-
-import initializeAuthentication from "../Firebase/Firebase.init";
 import axios from 'axios';
-
+import initializeAuthentication from '../Firebase/Firebase.init';
 initializeAuthentication();
 const useFirebase = () => {
     const [user, setUser] = useState({});

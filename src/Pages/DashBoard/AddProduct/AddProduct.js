@@ -2,7 +2,9 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { Col, Container, Row, Button, Modal } from 'react-bootstrap';
 import { useForm } from "react-hook-form";
-import useAuth from '../../hooks/useAuth';
+import useAuth from '../../../hooks/useAuth';
+
+
 import './AddProduct.css'
 const AddProduct = () => {
     const { user } = useAuth();

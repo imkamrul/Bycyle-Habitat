@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Col, Container, Image, Modal, Row, Button } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
 import { useHistory, useParams } from 'react-router';
-import useAuth from '../hooks/useAuth';
+import useAuth from '../../hooks/useAuth';
 import Footer from '../Shared/Footer/Footer';
 import Header from '../Shared/Header/Header';
 import { useForm } from "react-hook-form";
