@@ -20,7 +20,7 @@ const AddProduct = () => {
     };
     const handleProductToServer = () => {
         handleProductModelClose()
-        console.log(newProduct)
+
         axios.post('https://obscure-depths-70319.herokuapp.com/products', newProduct)
             .then(res => {
                 if (res.data.insertedId) {

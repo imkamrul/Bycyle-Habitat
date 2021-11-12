@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Col, Container, Image, Row, Button } from 'react-bootstrap';
+import { Col, Container, Image, Row, Button, ProgressBar, Spinner } from 'react-bootstrap';
 import Header from '../Shared/Header/Header';
 import googleLogo from '../../img/gogle.png'
 import './LogIn.css'
@@ -8,16 +8,19 @@ import { Helmet } from 'react-helmet';
 import useAuth from '../../hooks/useAuth';
 import { useHistory, useLocation } from 'react-router';
 const LogIn = () => {
-    const { loginUser, signInWithGoogle, registerUser } = useAuth();
+    const { loginUser, signInWithGoogle, registerUser, isLoading, authError } = useAuth();
     const { register, handleSubmit, reset } = useForm();
     const location = useLocation();
     const history = useHistory();
-    // handle email pass log in 
+
+    console.log(authError)
     const handleLogIn = data => {
+
         loginUser(data.email, data.password, location, history);
         reset();
     };
     const handleRegister = data => {
+
         reset();
         registerUser(data.email, data.password, data.name, history, data.img, location);
     };
@@ -38,6 +41,7 @@ const LogIn = () => {
             </Helmet>
             <Header />
             <Container>
+
                 <Row className="d-flex justify-content-center text-white">
                     <Col md={8} >
                         <Row className="mt-5 d-flex justify-content-end">
@@ -46,7 +50,12 @@ const LogIn = () => {
                                 {page ? <> <form onSubmit={handleSubmit(handleLogIn)} className="from-input-customize">
                                     <input as={Col} placeholder="Email" type="email"{...register("email", { required: true })} />
                                     <input as={Col} placeholder="Password" type="password" {...register("password", { required: true })} />
-                                    <p className="my-4">   <input type="submit" value="Log in" /></p>
+                                    <p className="my-4">
+                                        <input type="submit" value="Log in" />
+
+                                        <br />
+                                        {isLoading && <Spinner animation="border" variant="info" />}
+                                    </p>
                                 </form>
                                     <hr />
                                     <Row className="d-flex justify-content-center"><Col md={8}><p className="google-sign-in-customize" onClick={handleGoogleSignIn}>  <Image src={googleLogo} roundedCircle style={{ height: "25px" }} /> <span className="fs-5 ">Sign in with google</span> </p></Col></Row>
@@ -56,9 +65,18 @@ const LogIn = () => {
                                         <input as={Col} placeholder="Email" type="email"{...register("email", { required: true })} />
                                         <input as={Col} placeholder="Photo url only" type="text"{...register("img", { required: true })} />
                                         <input as={Col} placeholder="Password" type="password" {...register("password", { required: true })} />
-                                        <p className="my-4">   <input type="submit" value="Register" /></p>
+                                        <br />
+
+                                        <p className="my-4">
+                                            <input type="submit" value="Register" />
+
+                                            <br />
+                                            {isLoading && <Spinner animation="border" variant="info" />}
+
+                                        </p>
                                     </form>}
                                 <p > {page ? `Didn't have an account ? Create Now` : `Do you have already  an account ? Log in Now`} <br /><Button variant="outline-info" className="my-3" onClick={() => handlePage(!page)} >{page ? "Sign Up " : "Log in"}</Button> </p>
+
                             </Col>
 
                         </Row>

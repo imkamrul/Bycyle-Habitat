@@ -7,6 +7,7 @@ import useAuth from '../../hooks/useAuth';
 import Footer from '../Shared/Footer/Footer';
 import Header from '../Shared/Header/Header';
 import { useForm } from "react-hook-form";
+
 import './ProductBuy.css'
 const ProductBuy = () => {
     const { user, admin } = useAuth();
@@ -54,23 +55,26 @@ const ProductBuy = () => {
             </Helmet>
 
             <Header />
+
             {selectedProduct.name && <Container>
-                <Row className="my-5">
-                    <Col md={8}>
-                        <Row className="product-background">
-                            <Col md={6}>
-                                <Image src={selectedProduct.img} fluid />
-                            </Col>
-                            <Col md={6} className="text-start">
-                                <h4 className="fs-2 text-muted"> Name : {selectedProduct.name} </h4>
-                                <h4>Price : BDT {selectedProduct.price} Tk</h4>
-                                <p className="fs-5">Details :  {selectedProduct.description} </p>
-                            </Col>
-                        </Row>
+                <Row className="my-5" >
+                    <Col md={8} className="d-flex justify-content-center align-items-center">
+                        <div className="">
+                            <Row className="product-background">
+                                <Col md={6}>
+                                    <Image src={selectedProduct.img} fluid />
+                                </Col>
+                                <Col md={6} className="text-start">
+                                    <h4 className="fs-2 text-muted"> Name : {selectedProduct.name} </h4>
+                                    <h4>Price : BDT {selectedProduct.price} Tk</h4>
+                                    <p className="fs-5">Details :  {selectedProduct.description} </p>
+                                </Col>
+                            </Row>
+                        </div>
                     </Col>
                     {
                         (selectedProduct.name && user.displayName) ? <Col md={4} className="product-buy-form">
-                            <h4 className="text-muted text-start">Fill the form for confirm order</h4>
+                            <h4 className="mb-3 text-start">Fill the form for confirm order</h4>
                             <form onSubmit={handleSubmit(onSubmit)}>
                                 <input type="text" defaultValue={user.displayName} {...register("name")} />
                                 <input type="email" defaultValue={user.email} readOnly {...register("email")} />

@@ -37,6 +37,7 @@ const useFirebase = () => {
             .finally(() => setIsLoading(false));
     }
     const loginUser = (email, password, location, history) => {
+        setAuthError('');
         setIsLoading(true);
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
@@ -110,7 +111,8 @@ const useFirebase = () => {
         loginUser,
         signInWithGoogle,
         logout,
-        admin
+        admin,
+        setAuthError
     }
 };
 

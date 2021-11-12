@@ -4,15 +4,15 @@ import { Col, Container, Row, Modal, Button } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import useAuth from '../../../hooks/useAuth';
 const MakeAdmin = () => {
-    const { user, admin } = useAuth();
-    console.log(admin)
+    const { user } = useAuth();
+
     const { register, handleSubmit, reset } = useForm();
     const [showAdminModal, setAdminModal] = useState(false);
     const [newAdmin, setNewAdmin] = useState(" ")
     const handleAdminModelClose = () => setAdminModal(false);
     const handleAdminModelShow = () => setAdminModal(true);
     const submitAddAdminFrom = email => {
-        console.log(email)
+
         reset();
         setNewAdmin(email)
         handleAdminModelShow()

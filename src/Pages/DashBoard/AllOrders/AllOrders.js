@@ -18,7 +18,7 @@ const AllOrders = () => {
     const { register, handleSubmit, } = useForm();
     const handleStatusUpdate = data => {
         const id = orderUpdate._id;
-        console.log(id, data)
+
         axios.put(`https://obscure-depths-70319.herokuapp.com/orderStatusUpdate/${id}`, data)
             .then(res => {
                 if (res.data.modifiedCount) {
@@ -49,7 +49,7 @@ const AllOrders = () => {
             .then(res => setAllOrders(res.data))
     }, [])
     const handleOrderCatagories = category => {
-        console.log(category)
+
         axios.get(`https://obscure-depths-70319.herokuapp.com/catagoriesOrder?status=${category}`)
             .then(res => {
                 setAllOrders(res.data)
@@ -87,7 +87,6 @@ const AllOrders = () => {
                     <Col md={2} xs={6}>
                         <h5 className="my-2 text-center"><Button variant="danger" className=" ms-3" onClick={() => handleOrderDelete(order._id)}>Delete <i className="fas fa-trash"  ></i></Button></h5>
                     </Col>
-
                 </Row>)
                     : <p className="text-center fs-5"> No Orders</p>
                 }
