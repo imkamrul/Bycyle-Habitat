@@ -2,8 +2,9 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Card, Col, Container, Row, Spinner, Button } from 'react-bootstrap';
 import { useHistory } from 'react-router';
-import Footer from '../Shared/Footer/Footer';
-import Header from '../Shared/Header/Header';
+import Footer from '../../Shared/Footer/Footer';
+import Header from '../../Shared/Header/Header';
+import ExploreBanner from '../ExploreBanner/ExploreBanner';
 
 const Cycles = () => {
     const [allProducts, setAllProducts] = useState({});
@@ -18,6 +19,8 @@ const Cycles = () => {
     return (
         <div>
             <Header />
+            <ExploreBanner />
+
             <Container className="my-5">
                 <Row>
                     <Col>
@@ -35,7 +38,7 @@ const Cycles = () => {
                                 <Card.Title>{product.name}</Card.Title>
                                 <p className="fs-5 mb-0">Price :  <span className="text-warning fw-bold">{product.price} Tk</span> </p>
                                 <Card.Text className="text-start">
-                                    {product.description.slice(0, 122)}.
+                                    {product.description.slice(0, 120)}.
 
                                 </Card.Text>
                                 <Button variant="dark" onClick={() => handleProductBuy(product._id)}>Buy Now</Button>

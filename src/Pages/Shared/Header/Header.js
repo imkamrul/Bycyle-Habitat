@@ -13,7 +13,7 @@ const Header = () => {
         // color: "#FFC107"
     }
     return (
-        <Navbar bg="dark" variant="dark" expand="md">
+        <Navbar bg="dark" variant="dark" expand="md" sticky="top">
             <Container>
                 <Navbar.Brand as={NavLink} to="/">
 
@@ -29,7 +29,7 @@ const Header = () => {
                         <NavLink to="/cycles" className="fs-4 pt-1" activeStyle={activeStyle}>
                             Explore More
                         </NavLink>
-                        {user.emai && <NavLink to="/dashboard" className="fs-4 pt-1" activeStyle={activeStyle}>
+                        {user.email && <NavLink to="/dashboard" className="fs-4 pt-1" activeStyle={activeStyle}>
                             Dashboard
                         </NavLink>
                         }

@@ -54,40 +54,39 @@ const ProductBuy = () => {
             </Helmet>
 
             <Header />
-            product by {id}
-
             <Container>
                 <Row className="my-5">
-                    <Col md={6}>
-                        <Image src={selectedProduct.img} rounded fluid />
+                    <Col md={8}>
+                        <Row className="product-background">
+                            <Col md={6}>
+                                <Image src={selectedProduct.img} fluid />
+                            </Col>
+                            <Col md={6} className="text-start">
+                                <h4 className="fs-2 text-muted"> Name : {selectedProduct.name} </h4>
+                                <h4>Price : BDT {selectedProduct.price} Tk</h4>
+                                <p className="fs-5">Details :  {selectedProduct.description} </p>
+                            </Col>
+                        </Row>
                     </Col>
-                    <Col md={6} className="d-flex align-items-center">
-                        <div className="text-start">
-                            <h4 className="fs-2 text-muted">{selectedProduct.name} </h4>
-                            <h4>BDT {selectedProduct.price} Tk</h4>
-                            <p className="fs-5">{selectedProduct.description} </p>
-                        </div>
-                    </Col>
-                </Row>
-                {
-                    (selectedProduct.name && user.displayName) ? <Row className="d-flex justify-content-center">
-                        <Col md={4} className="my-5 product-buy-form">
-                            <h4 className="text-muted">Wanna buy this product ?</h4>
+                    {
+                        (selectedProduct.name && user.displayName) ? <Col md={4} className="product-buy-form">
+                            <h4 className="text-muted text-start">Fill the form for confirm order</h4>
                             <form onSubmit={handleSubmit(onSubmit)}>
                                 <input type="text" defaultValue={user.displayName} {...register("name")} />
-                                <input type="email" defaultValue={user.email} {...register("email")} />
+                                <input type="email" defaultValue={user.email} readOnly {...register("email")} />
                                 <input type="number" placeholder="Mobile number" {...register("mobile", { required: true, maxLength: "11", minLength: "11" })} />
                                 <textarea placeholder="Address" type="text" {...register("address", { required: true })} />
-                                <input type="text" defaultValue={selectedProduct.name} {...register("productName")} />
-                                <input type="number" defaultValue={selectedProduct.price} {...register("price")} />
+                                <input type="text" defaultValue={selectedProduct.name} readOnly {...register("productName")} />
+                                <input type="number" defaultValue={selectedProduct.price} readOnly {...register("price")} />
 
+                                <Button variant="dark" type="submit" className="my-3">Place Order</Button>
 
-                                <input type="submit" />
                             </form>
                         </Col>
-                    </Row>
-                        : <p>Your form is loading</p>
-                }
+
+                            : <p>Your form is loading</p>
+                    }
+                </Row>
             </Container>
             <Modal
                 show={showProductBuyModal}

@@ -5,10 +5,11 @@ import Home from './Pages/Home/Home/Home';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import LogIn from './Pages/LogIn/LogIn';
 import Dashboard from './Pages/DashBoard/DashBoard/Dashboard';
-import Cycles from './Pages/Cycles/Cycles';
+
 import PageNotFound from './Pages/PageNotFound/PageNotFound';
 import PrivateRoute from './Pages/PrivateRoute/PrivateRoute';
 import ProductBuy from './Pages/ProductBuy/ProductBuy';
+import Cycles from './Pages/ExploreMore/Cycles/Cycles';
 function App() {
   return (
     <div className="App">

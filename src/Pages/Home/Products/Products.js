@@ -36,7 +36,7 @@ const Products = () => {
                             <Card.Title>{product.name}</Card.Title>
                             <p className="fs-5 mb-0">Price :  <span className="text-warning fw-bold">{product.price} Tk</span> </p>
                             <Card.Text>
-                                {product.description.slice(0, 135)}.
+                                {product.description.slice(0, 127)}.
 
                             </Card.Text>
                             <Button variant="dark" onClick={() => handleProductBuy(product._id)}>Buy Now</Button>
