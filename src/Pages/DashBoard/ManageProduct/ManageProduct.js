@@ -75,7 +75,7 @@ const ManageProduct = () => {
                 </Row>
                 {allProducts.length ? allProducts.map(product => <Row
                     key={product._id}
-                    className="user-booking-detail g-0 mx-5">
+                    className="user-order-detail g-0 mx-5">
                     <Col md={3} xs={12}><h5 className="mb-0 mt-2 fs-6 text-start ps-3">{product.name}</h5></Col>
                     <Col md={1} xs={12}> <Image src={product.img} rounded fluid style={{ height: "50px" }} /></Col>
                     <Col md={2} xs={6}><h5 className="mb-0 mt-2 fs-6 ">{product.price} Tk</h5></Col>

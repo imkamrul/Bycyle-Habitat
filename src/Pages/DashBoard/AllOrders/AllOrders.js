@@ -75,7 +75,7 @@ const AllOrders = () => {
                 </Row>
                 {allOrders.length ? allOrders.map(order => <Row
                     key={order._id}
-                    className="user-booking-detail g-0">
+                    className="user-order-detail g-0">
                     <Col md={3} xs={12}><h5 className="mb-0 mt-2 fs-6 text-start ps-3"> Name: {order.name} <br />Email: {order.email}</h5></Col>
                     <Col md={2} xs={12}><h5 className="mb-0 mt-2  fs-6 ">{order.productName}</h5></Col>
                     <Col md={1} xs={12}><h5 className="mb-0 mt-2  fs-6 ">{order.orderData}</h5></Col>

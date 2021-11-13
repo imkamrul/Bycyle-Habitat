@@ -19,7 +19,7 @@ const Reviews = () => {
 
                 </Col>
             </Row>
-            <Row xs={1} md={3} className="g-2 mt-4">
+            <Row xs={1} md={3} className="g-2 mt-4 overflow-auto" style={{ height: "310px" }}>
                 {allReviews?.length ? allReviews.map(review => <Col
                     key={review._id}>
                     <Card className="m-2 border-0 shadow-lg">
