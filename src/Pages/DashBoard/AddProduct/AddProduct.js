@@ -34,7 +34,7 @@ const AddProduct = () => {
             <h4 className="fs-3 fw-light">Add a Product </h4>
             <Row className="g-0 d-flex justify-content-center">
                 <Col md={4}>
-                    <form onSubmit={handleSubmit(handelAddProduct)} className="dashboard-from">
+                    <form onSubmit={handleSubmit(handelAddProduct)} className="dashboard-from ms-3">
 
                         <input placeholder="Product Name" type="text" {...register("name", { required: true })} />
                         <input placeholder="Price" type="number"{...register("price", { required: true, min: "0", max: "999999" })} />

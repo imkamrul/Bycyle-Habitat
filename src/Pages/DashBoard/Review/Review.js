@@ -34,9 +34,10 @@ const Review = () => {
             <h4 className="fs-3 fw-light">Add a Review </h4>
             <Row className="g-0 d-flex justify-content-center">
                 <Col md={4}>
-                    <form onSubmit={handleSubmit(handelAddReview)} className="dashboard-from">
+                    <form onSubmit={handleSubmit(handelAddReview)} className="dashboard-from ms-3">
 
-                        <input placeholder="Full Name" type="text" {...register("name", { required: true })} />
+                        <input defaultValue={user.displayName} type="text" {...register("name")} />
+                        <input defaultValue={user.email} type="text" {...register("email")} />
                         <input placeholder="Photo" type="text"{...register("img", { required: true })} />
                         <input placeholder="Rating" type="number"{...register("rating", { required: true, min: "0", max: "5" })} />
 
@@ -51,7 +52,7 @@ const Review = () => {
                     <Modal.Title>Hello {user?.displayName}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    Do you want to add <span className="fw-bold">{newReview?.name}</span> in Reviews  ?
+                    Do you want to add <span className="fw-bold">"{newReview?.description}"</span> in Reviews  ?
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleReviewModelClose}>

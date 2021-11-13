@@ -63,10 +63,11 @@ const ProductBuy = () => {
                             <Row className="product-background">
                                 <Col md={6}>
                                     <Image src={selectedProduct.img} fluid />
+                                    <p className="fs-2 text-start">{selectedProduct.name} </p>
                                 </Col>
                                 <Col md={6} className="text-start">
-                                    <h4 className="fs-2 text-muted"> Name : {selectedProduct.name} </h4>
-                                    <h4>Price : BDT {selectedProduct.price} Tk</h4>
+
+                                    <p className="fs-5">Price : BDT  <span className="fw-bold">{selectedProduct.price}</span> Tk</p>
                                     <p className="fs-5">Details :  {selectedProduct.description} </p>
                                 </Col>
                             </Row>

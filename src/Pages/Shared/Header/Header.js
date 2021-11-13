@@ -35,10 +35,10 @@ const Header = () => {
 
 
                         {user.email ? <>    <span className=" text-light pt-2 fs-5 px-2 fw-lighter "> <Image className="user-picture" src={photoURL} roundedCircle /> {displayName}</span>
-                            <Button variant="warning" onClick={logout} className="m-1 text-white">Log Out</Button>
+                            <Button variant="warning" onClick={logout} className="m-1 text-white">Log Out <i className="fas fa-sign-out-alt ps-2"></i></Button>
                         </>
                             :
-                            <NavLink to="/login"><Button variant="outline-info mt-1">Log In</Button></NavLink>}
+                            <NavLink to="/login"><Button variant="outline-info mt-1">Log In <i className="fas fa-sign-in-alt ps-2"></i></Button></NavLink>}
 
                     </Nav>
                 </Navbar.Collapse>

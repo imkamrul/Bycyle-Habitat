@@ -41,10 +41,10 @@ const MyOrders = () => {
             <Row className="d-flex  justify-content-center g-0">
                 <Col md={10}>
 
-                    <Row className="text-start">
+                    <Row className="text-start g-0">
                         <h4 className="my-3">My Orders ({myOrders.length})</h4>
                         <Col md={8} className="bg-white">
-                            <Row className="g-2 pt-4">
+                            <Row className="g-0 pt-4">
                                 {myOrders.length ? myOrders.map(order => <Col
                                     key={order._id} xs={12} className="mb-2" >
 

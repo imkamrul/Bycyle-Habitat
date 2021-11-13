@@ -60,7 +60,7 @@ const Dashboard = () => {
                                     <Nav className="ms-auto pe-5">
 
                                         <span className=" pt-2 fs-5 px-2 fw-lighter "> <Image className="user-picture" src={photoURL} roundedCircle /> {displayName}</span>
-                                        <Button variant="warning" onClick={logout} className="m-1 text-white">Log Out</Button>
+                                        <Button variant="warning" onClick={logout} className="m-1 text-white">Log Out <i className="fas fa-sign-out-alt ps-2"></i></Button>
 
                                     </Nav>
                                 </Navbar.Collapse>
