@@ -89,6 +89,7 @@ const useFirebase = () => {
         return () => unsubscribed;
     }, [auth])
     useEffect(() => {
+
         axios.get(`https://obscure-depths-70319.herokuapp.com/users/${user.email}`)
 
 
