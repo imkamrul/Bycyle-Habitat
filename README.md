@@ -9,12 +9,7 @@ Open [https://bicyle-habitat.firebaseapp.com/](https://bicyle-habitat.firebaseap
 
 
 
-### `Client site code `
 
-[https://github.com/programming-hero-web-course-4/niche-website-client-side-k17h02](https://github.com/programming-hero-web-course-4/niche-website-client-side-k17h02) for more information.
-### `Server site code `
-
-[https://github.com/programming-hero-web-course-4/niche-website-server-side-k17h02](https://github.com/programming-hero-web-course-4/niche-website-server-side-k17h02) for more information.
 
 
 ### `Website Summary`
