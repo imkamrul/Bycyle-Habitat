@@ -7,9 +7,7 @@ const Reviews = () => {
   const [allReviews, setAllReviews] = useState({});
   useEffect(() => {
     axios
-      .get(
-        "https://bycylce-habitat-server-9s7nyltjo-kamrul-hasan01.vercel.app/reviews"
-      )
+      .get("https://www.api.kamrul.pro/reviews")
       .then((res) => setAllReviews(res.data));
   }, []);
 

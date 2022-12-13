@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Col, Container, Row, Button, Modal } from "react-bootstrap";
+import { Button, Col, Container, Modal, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../hooks/useAuth";
 import "./AllOrder.css";
@@ -20,21 +20,14 @@ const AllOrders = () => {
     const id = orderUpdate._id;
 
     axios
-      .put(
-        `https://bycylce-habitat-server-9s7nyltjo-kamrul-hasan01.vercel.app/orderStatusUpdate/${id}`,
-        data
-      )
+      .put(`https://www.api.kamrul.pro/orderStatusUpdate/${id}`, data)
       .then((res) => {
         if (res.data.modifiedCount) {
           closeUpdateModal();
-          axios
-            .get(
-              "https://bycylce-habitat-server-9s7nyltjo-kamrul-hasan01.vercel.app/allOrders"
-            )
-            .then((res) => {
-              setAllOrders(res.data);
-              alert("Status  updated successful");
-            });
+          axios.get("https://www.api.kamrul.pro/allOrders").then((res) => {
+            setAllOrders(res.data);
+            alert("Status  updated successful");
+          });
         }
       });
   };
@@ -42,9 +35,7 @@ const AllOrders = () => {
     const sure = window.confirm("are you sure to delete this ?");
     if (sure) {
       axios
-        .delete(
-          `https://bycylce-habitat-server-9s7nyltjo-kamrul-hasan01.vercel.app/orderDelete/${id}`
-        )
+        .delete(`https://www.api.kamrul.pro/orderDelete/${id}`)
         .then((res) => {
           if (res.data.deletedCount) {
             alert("deleted successful");
@@ -56,16 +47,12 @@ const AllOrders = () => {
   };
   useEffect(() => {
     axios
-      .get(
-        "https://bycylce-habitat-server-9s7nyltjo-kamrul-hasan01.vercel.app/allOrders"
-      )
+      .get("https://www.api.kamrul.pro/allOrders")
       .then((res) => setAllOrders(res.data));
   }, []);
   const handleOrderCatagories = (category) => {
     axios
-      .get(
-        `https://bycylce-habitat-server-9s7nyltjo-kamrul-hasan01.vercel.app/catagoriesOrder?status=${category}`
-      )
+      .get(`https://www.api.kamrul.pro/catagoriesOrder?status=${category}`)
       .then((res) => {
         setAllOrders(res.data);
       });

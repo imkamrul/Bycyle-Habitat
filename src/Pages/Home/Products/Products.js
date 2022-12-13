@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Card, Col, Container, Row, Spinner, Button } from "react-bootstrap";
+import { Button, Card, Col, Container, Row, Spinner } from "react-bootstrap";
 import { useHistory } from "react-router";
 import "./Product.css";
 const Products = () => {
@@ -9,7 +9,7 @@ const Products = () => {
   const getData = async () => {
     try {
       const result = await axios.get(
-        "https://bycylce-habitat-server.vercel.app/products?search=6"
+        "https://www.api.kamrul.pro/products?search=6"
       );
 
       setAllProducts(result.data);

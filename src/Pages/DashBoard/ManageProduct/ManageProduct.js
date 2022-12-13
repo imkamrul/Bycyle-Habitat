@@ -1,13 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import {
+  Button,
   Col,
   Container,
-  Row,
-  Button,
+  Form,
   Image,
   Modal,
-  Form,
+  Row,
 } from "react-bootstrap";
 import useAuth from "../../../hooks/useAuth";
 const ManageProduct = () => {
@@ -17,18 +17,14 @@ const ManageProduct = () => {
 
   useEffect(() => {
     axios
-      .get(
-        "https://bycylce-habitat-server-9s7nyltjo-kamrul-hasan01.vercel.app/products"
-      )
+      .get("https://www.api.kamrul.pro/products")
       .then((res) => setAllProducts(res.data));
   }, []);
   const handleDeleteProduct = (id) => {
     const sure = window.confirm("are you sure to delete this ?");
     if (sure) {
       axios
-        .delete(
-          `https://bycylce-habitat-server-9s7nyltjo-kamrul-hasan01.vercel.app/productDelete/${id}`
-        )
+        .delete(`https://www.api.kamrul.pro/productDelete/${id}`)
         .then((res) => {
           if (res.data.deletedCount) {
             alert("deleted successful");
@@ -41,14 +37,10 @@ const ManageProduct = () => {
     }
   };
   const getProductUpdate = (id) => {
-    axios
-      .get(
-        `https://bycylce-habitat-server-9s7nyltjo-kamrul-hasan01.vercel.app/singleProduct/${id}`
-      )
-      .then((res) => {
-        setSelectedProduct(res.data);
-        handleupdatingMOdalShow();
-      });
+    axios.get(`https://www.api.kamrul.pro/singleProduct/${id}`).then((res) => {
+      setSelectedProduct(res.data);
+      handleupdatingMOdalShow();
+    });
   };
 
   const handleOnBlurProductForm = (e) => {
@@ -67,16 +59,14 @@ const ManageProduct = () => {
     handleupdatingMOdalClose();
     axios
       .put(
-        `https://bycylce-habitat-server-9s7nyltjo-kamrul-hasan01.vercel.app/products/${selectedProduct._id}`,
+        `https://www.api.kamrul.pro/products/${selectedProduct._id}`,
         selectedProduct
       )
       .then((res) => {
         if (res.data.modifiedCount > 0) {
           alert("Product updated successfully");
           axios
-            .get(
-              "https://bycylce-habitat-server-9s7nyltjo-kamrul-hasan01.vercel.app/products"
-            )
+            .get("https://www.api.kamrul.pro/products")
             .then((res) => setAllProducts(res.data));
         }
       });

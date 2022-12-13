@@ -1,15 +1,15 @@
-import { useState, useEffect } from "react";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  GoogleAuthProvider,
-  signInWithPopup,
-  updateProfile,
-  signOut,
-} from "firebase/auth";
 import axios from "axios";
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+  updateProfile,
+} from "firebase/auth";
+import { useEffect, useState } from "react";
 import initializeAuthentication from "../Firebase/Firebase.init";
 initializeAuthentication();
 const useFirebase = () => {
@@ -77,20 +77,14 @@ const useFirebase = () => {
   const saveUserPost = (email, displayName) => {
     const user = { email, displayName };
     axios
-      .post(
-        "https://bycylce-habitat-server-9s7nyltjo-kamrul-hasan01.vercel.app/users",
-        user
-      )
+      .post("https://www.api.kamrul.pro/users", user)
 
       .then();
   };
   const saveUserPut = (email, displayName) => {
     const user = { email, displayName };
     axios
-      .put(
-        "https://bycylce-habitat-server-9s7nyltjo-kamrul-hasan01.vercel.app/users",
-        user
-      )
+      .put("https://www.api.kamrul.pro/users", user)
 
       .then();
   };
@@ -108,9 +102,7 @@ const useFirebase = () => {
   }, [auth]);
   useEffect(() => {
     axios
-      .get(
-        `https://bycylce-habitat-server-9s7nyltjo-kamrul-hasan01.vercel.app/users/${user.email}`
-      )
+      .get(`https://www.api.kamrul.pro/users/${user.email}`)
 
       .then((res) => setAdmin(res.data.admin));
   }, [user.email]);

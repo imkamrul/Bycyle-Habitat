@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { Col, Container, Row, Button, Modal } from "react-bootstrap";
+import { Button, Col, Container, Modal, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../hooks/useAuth";
 
@@ -21,10 +21,7 @@ const AddProduct = () => {
     handleProductModelClose();
 
     axios
-      .post(
-        "https://bycylce-habitat-server-9s7nyltjo-kamrul-hasan01.vercel.app/products",
-        newProduct
-      )
+      .post("https://www.api.kamrul.pro/products", newProduct)
       .then((res) => {
         if (res.data.insertedId) {
           alert("Congrats Your Product has been added successfully.");

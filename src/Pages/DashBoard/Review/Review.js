@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Container, Col, Button, Modal } from "react-bootstrap";
+import { Button, Col, Container, Modal } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 
-import { Row } from "react-bootstrap";
 import axios from "axios";
+import { Row } from "react-bootstrap";
 import useAuth from "../../../hooks/useAuth";
 
 const Review = () => {
@@ -21,16 +21,11 @@ const Review = () => {
   const handleReviewsToServer = () => {
     handleReviewModelClose();
     console.log(newReview);
-    axios
-      .post(
-        "https://bycylce-habitat-server-9s7nyltjo-kamrul-hasan01.vercel.app/reviews",
-        newReview
-      )
-      .then((res) => {
-        if (res.data.insertedId) {
-          alert("Congrats Your review has been added successfully.");
-        }
-      });
+    axios.post("https://www.api.kamrul.pro/reviews", newReview).then((res) => {
+      if (res.data.insertedId) {
+        alert("Congrats Your review has been added successfully.");
+      }
+    });
   };
   return (
     <Container className="py-5">

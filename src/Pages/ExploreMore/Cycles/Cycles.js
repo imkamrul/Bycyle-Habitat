@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Card, Col, Container, Row, Spinner, Button } from "react-bootstrap";
+import { Button, Card, Col, Container, Row, Spinner } from "react-bootstrap";
 import { useHistory } from "react-router";
 import Footer from "../../Shared/Footer/Footer";
 import Header from "../../Shared/Header/Header";
@@ -11,9 +11,7 @@ const Cycles = () => {
   const history = useHistory();
   useEffect(() => {
     axios
-      .get(
-        "https://bycylce-habitat-server-9s7nyltjo-kamrul-hasan01.vercel.app/products"
-      )
+      .get("https://www.api.kamrul.pro/products")
       .then((res) => setAllProducts(res.data));
   }, []);
   const handleProductBuy = (id) => {

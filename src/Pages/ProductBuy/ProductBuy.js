@@ -1,12 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Col, Container, Image, Modal, Row, Button } from "react-bootstrap";
+import { Button, Col, Container, Image, Modal, Row } from "react-bootstrap";
 import { Helmet } from "react-helmet";
+import { useForm } from "react-hook-form";
 import { useHistory, useParams } from "react-router";
 import useAuth from "../../hooks/useAuth";
 import Footer from "../Shared/Footer/Footer";
 import Header from "../Shared/Header/Header";
-import { useForm } from "react-hook-form";
 
 import "./ProductBuy.css";
 const ProductBuy = () => {
@@ -30,19 +30,14 @@ const ProductBuy = () => {
   };
   useEffect(() => {
     axios
-      .get(
-        `https://bycylce-habitat-server-9s7nyltjo-kamrul-hasan01.vercel.app/selectedProduct/${id}`
-      )
+      .get(`https://www.api.kamrul.pro/selectedProduct/${id}`)
       .then((res) => setSelectedProduct(res.data));
   }, [id]);
   const handleReviewsToServer = () => {
     handleProductBuyModalClose();
 
     axios
-      .post(
-        "https://bycylce-habitat-server-9s7nyltjo-kamrul-hasan01.vercel.app/orders",
-        BuyingProduct
-      )
+      .post("https://www.api.kamrul.pro/orders", BuyingProduct)
       .then((res) => {
         if (res.data.insertedId) {
           alert("Congrats Your order has been added successfully.");

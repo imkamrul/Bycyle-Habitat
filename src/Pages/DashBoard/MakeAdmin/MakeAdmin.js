@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { Col, Container, Row, Modal, Button } from "react-bootstrap";
+import { Button, Col, Container, Modal, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../hooks/useAuth";
 const MakeAdmin = () => {
@@ -20,10 +20,7 @@ const MakeAdmin = () => {
   const handleMakeAdmin = () => {
     handleAdminModelClose();
     axios
-      .put(
-        `https://bycylce-habitat-server-9s7nyltjo-kamrul-hasan01.vercel.app/users/${user.email}`,
-        newAdmin
-      )
+      .put(`https://www.api.kamrul.pro/users/${user.email}`, newAdmin)
       .then((res) => {
         if (res.data?.modifiedCount > 0) {
           alert("New Admin added");

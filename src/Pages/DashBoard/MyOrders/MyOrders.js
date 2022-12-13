@@ -1,13 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import {
-  Container,
-  Row,
-  Col,
   Button,
   Card,
+  Col,
+  Container,
   ListGroup,
   Modal,
+  Row,
 } from "react-bootstrap";
 import { useHistory } from "react-router";
 import useAuth from "../../../hooks/useAuth";
@@ -27,7 +27,7 @@ const MyOrders = () => {
   const getData = async () => {
     try {
       const result = await axios.get(
-        `https://bycylce-habitat-server-9s7nyltjo-kamrul-hasan01.vercel.app/myOrders?search=${user.email}`
+        `https://www.api.kamrul.pro/myOrders?search=${user.email}`
       );
 
       setMyOrders(result.data);
@@ -44,17 +44,13 @@ const MyOrders = () => {
   );
   const deleteMyOrder = (id) => {
     handleOrderDeleteModelClose();
-    axios
-      .delete(
-        `https://bycylce-habitat-server-9s7nyltjo-kamrul-hasan01.vercel.app/orderDelete/${id}`
-      )
-      .then((res) => {
-        if (res.data.deletedCount) {
-          alert("deleted successful");
-          const updateMyOrder = myOrders.filter((order) => order._id !== id);
-          setMyOrders(updateMyOrder);
-        }
-      });
+    axios.delete(`https://www.api.kamrul.pro/orderDelete/${id}`).then((res) => {
+      if (res.data.deletedCount) {
+        alert("deleted successful");
+        const updateMyOrder = myOrders.filter((order) => order._id !== id);
+        setMyOrders(updateMyOrder);
+      }
+    });
   };
   const paymentPage = () => {
     history.push("dashboard/pay");
