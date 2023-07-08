@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Button, Col, Container, Modal, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../hooks/useAuth";
+import { BASE_URL } from "../../../utils/BaseUrl";
 const MakeAdmin = () => {
   const { user } = useAuth();
 
@@ -19,15 +20,13 @@ const MakeAdmin = () => {
 
   const handleMakeAdmin = () => {
     handleAdminModelClose();
-    axios
-      .put(`https://www.api.kamrul.pro/users/${user.email}`, newAdmin)
-      .then((res) => {
-        if (res.data?.modifiedCount > 0) {
-          alert("New Admin added");
-        } else {
-          alert("You have no permission to make anyone admin");
-        }
-      });
+    axios.put(`${BASE_URL}/users/${user.email}`, newAdmin).then((res) => {
+      if (res.data?.modifiedCount > 0) {
+        alert("New Admin added");
+      } else {
+        alert("You have no permission to make anyone admin");
+      }
+    });
   };
   return (
     <Container className="py-5">

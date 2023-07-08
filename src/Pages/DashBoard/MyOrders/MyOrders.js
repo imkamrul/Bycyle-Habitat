@@ -11,6 +11,7 @@ import {
 } from "react-bootstrap";
 import { useHistory } from "react-router";
 import useAuth from "../../../hooks/useAuth";
+import { BASE_URL } from "../../../utils/BaseUrl";
 
 const MyOrders = () => {
   const { user } = useAuth();
@@ -27,7 +28,7 @@ const MyOrders = () => {
   const getData = async () => {
     try {
       const result = await axios.get(
-        `https://www.api.kamrul.pro/myOrders?search=${user.email}`
+        `${BASE_URL}/myOrders?search=${user.email}`
       );
 
       setMyOrders(result.data);
@@ -44,7 +45,7 @@ const MyOrders = () => {
   );
   const deleteMyOrder = (id) => {
     handleOrderDeleteModelClose();
-    axios.delete(`https://www.api.kamrul.pro/orderDelete/${id}`).then((res) => {
+    axios.delete(`${BASE_URL}/orderDelete/${id}`).then((res) => {
       if (res.data.deletedCount) {
         alert("deleted successful");
         const updateMyOrder = myOrders.filter((order) => order._id !== id);

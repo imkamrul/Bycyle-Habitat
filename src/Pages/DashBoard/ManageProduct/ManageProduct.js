@@ -10,34 +10,31 @@ import {
   Row,
 } from "react-bootstrap";
 import useAuth from "../../../hooks/useAuth";
+import { BASE_URL } from "../../../utils/BaseUrl";
 const ManageProduct = () => {
   const { user } = useAuth();
   const [selectedProduct, setSelectedProduct] = useState([]);
   const [allProducts, setAllProducts] = useState({});
 
   useEffect(() => {
-    axios
-      .get("https://www.api.kamrul.pro/products")
-      .then((res) => setAllProducts(res.data));
+    axios.get(`${BASE_URL}/products`).then((res) => setAllProducts(res.data));
   }, []);
   const handleDeleteProduct = (id) => {
     const sure = window.confirm("are you sure to delete this ?");
     if (sure) {
-      axios
-        .delete(`https://www.api.kamrul.pro/productDelete/${id}`)
-        .then((res) => {
-          if (res.data.deletedCount) {
-            alert("deleted successful");
-            const updatepProducts = allProducts.filter(
-              (product) => product._id !== id
-            );
-            setAllProducts(updatepProducts);
-          }
-        });
+      axios.delete(`${BASE_URL}/productDelete/${id}`).then((res) => {
+        if (res.data.deletedCount) {
+          alert("deleted successful");
+          const updatepProducts = allProducts.filter(
+            (product) => product._id !== id
+          );
+          setAllProducts(updatepProducts);
+        }
+      });
     }
   };
   const getProductUpdate = (id) => {
-    axios.get(`https://www.api.kamrul.pro/singleProduct/${id}`).then((res) => {
+    axios.get(`${BASE_URL}/singleProduct/${id}`).then((res) => {
       setSelectedProduct(res.data);
       handleupdatingMOdalShow();
     });
@@ -58,15 +55,12 @@ const ManageProduct = () => {
     e.preventDefault();
     handleupdatingMOdalClose();
     axios
-      .put(
-        `https://www.api.kamrul.pro/products/${selectedProduct._id}`,
-        selectedProduct
-      )
+      .put(`${BASE_URL}/products/${selectedProduct._id}`, selectedProduct)
       .then((res) => {
         if (res.data.modifiedCount > 0) {
           alert("Product updated successfully");
           axios
-            .get("https://www.api.kamrul.pro/products")
+            .get(`${BASE_URL}/products`)
             .then((res) => setAllProducts(res.data));
         }
       });

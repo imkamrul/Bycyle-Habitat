@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Button, Card, Col, Container, Row, Spinner } from "react-bootstrap";
 import { useHistory } from "react-router";
+import { BASE_URL } from "../../../utils/BaseUrl";
 import Footer from "../../Shared/Footer/Footer";
 import Header from "../../Shared/Header/Header";
 import ExploreBanner from "../ExploreBanner/ExploreBanner";
@@ -10,9 +11,7 @@ const Cycles = () => {
   const [allProducts, setAllProducts] = useState({});
   const history = useHistory();
   useEffect(() => {
-    axios
-      .get("https://www.api.kamrul.pro/products")
-      .then((res) => setAllProducts(res.data));
+    axios.get(`${BASE_URL}/products`).then((res) => setAllProducts(res.data));
   }, []);
   const handleProductBuy = (id) => {
     history.push(`/productBuy/${id}`);

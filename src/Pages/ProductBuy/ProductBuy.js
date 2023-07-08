@@ -8,6 +8,7 @@ import useAuth from "../../hooks/useAuth";
 import Footer from "../Shared/Footer/Footer";
 import Header from "../Shared/Header/Header";
 
+import { BASE_URL } from "../../utils/BaseUrl";
 import "./ProductBuy.css";
 const ProductBuy = () => {
   const { user, admin } = useAuth();
@@ -30,22 +31,20 @@ const ProductBuy = () => {
   };
   useEffect(() => {
     axios
-      .get(`https://www.api.kamrul.pro/selectedProduct/${id}`)
+      .get(`${BASE_URL}/selectedProduct/${id}`)
       .then((res) => setSelectedProduct(res.data));
   }, [id]);
   const handleReviewsToServer = () => {
     handleProductBuyModalClose();
 
-    axios
-      .post("https://www.api.kamrul.pro/orders", BuyingProduct)
-      .then((res) => {
-        if (res.data.insertedId) {
-          alert("Congrats Your order has been added successfully.");
-          if (!admin) {
-            history.push("/dashboard");
-          } else history.push("/home");
-        }
-      });
+    axios.post(`${BASE_URL}/orders`, BuyingProduct).then((res) => {
+      if (res.data.insertedId) {
+        alert("Congrats Your order has been added successfully.");
+        if (!admin) {
+          history.push("/dashboard");
+        } else history.push("/home");
+      }
+    });
   };
   return (
     <div>

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Col, Container, Modal, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../hooks/useAuth";
+import { BASE_URL } from "../../../utils/BaseUrl";
 import "./AllOrder.css";
 const AllOrders = () => {
   const { user } = useAuth();
@@ -19,43 +20,35 @@ const AllOrders = () => {
   const handleStatusUpdate = (data) => {
     const id = orderUpdate._id;
 
-    axios
-      .put(`https://www.api.kamrul.pro/orderStatusUpdate/${id}`, data)
-      .then((res) => {
-        if (res.data.modifiedCount) {
-          closeUpdateModal();
-          axios.get("https://www.api.kamrul.pro/allOrders").then((res) => {
-            setAllOrders(res.data);
-            alert("Status  updated successful");
-          });
-        }
-      });
+    axios.put(`${BASE_URL}/orderStatusUpdate/${id}`, data).then((res) => {
+      if (res.data.modifiedCount) {
+        closeUpdateModal();
+        axios.get(`${BASE_URL}/allOrders`).then((res) => {
+          setAllOrders(res.data);
+          alert("Status  updated successful");
+        });
+      }
+    });
   };
   const handleOrderDelete = (id) => {
     const sure = window.confirm("are you sure to delete this ?");
     if (sure) {
-      axios
-        .delete(`https://www.api.kamrul.pro/orderDelete/${id}`)
-        .then((res) => {
-          if (res.data.deletedCount) {
-            alert("deleted successful");
-            const updateOrders = allOrders.filter((order) => order._id !== id);
-            setAllOrders(updateOrders);
-          }
-        });
+      axios.delete(`${BASE_URL}/orderDelete/${id}`).then((res) => {
+        if (res.data.deletedCount) {
+          alert("deleted successful");
+          const updateOrders = allOrders.filter((order) => order._id !== id);
+          setAllOrders(updateOrders);
+        }
+      });
     }
   };
   useEffect(() => {
-    axios
-      .get("https://www.api.kamrul.pro/allOrders")
-      .then((res) => setAllOrders(res.data));
+    axios.get(`${BASE_URL}/allOrders`).then((res) => setAllOrders(res.data));
   }, []);
   const handleOrderCatagories = (category) => {
-    axios
-      .get(`https://www.api.kamrul.pro/catagoriesOrder?status=${category}`)
-      .then((res) => {
-        setAllOrders(res.data);
-      });
+    axios.get(`${BASE_URL}/catagoriesOrder?status=${category}`).then((res) => {
+      setAllOrders(res.data);
+    });
   };
   return (
     <div>

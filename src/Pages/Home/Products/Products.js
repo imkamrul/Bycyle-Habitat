@@ -2,15 +2,14 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Button, Card, Col, Container, Row, Spinner } from "react-bootstrap";
 import { useHistory } from "react-router";
+import { BASE_URL } from "../../../utils/BaseUrl";
 import "./Product.css";
 const Products = () => {
   const [allProducts, setAllProducts] = useState({});
   const history = useHistory();
   const getData = async () => {
     try {
-      const result = await axios.get(
-        "https://www.api.kamrul.pro/products?search=6"
-      );
+      const result = await axios.get(`${BASE_URL}/products?search=6`);
 
       setAllProducts(result.data);
     } catch (error) {

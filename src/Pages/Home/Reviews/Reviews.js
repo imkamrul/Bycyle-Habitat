@@ -2,13 +2,12 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Card, Col, Container, Image, Row, Spinner } from "react-bootstrap";
 import Rating from "react-rating";
+import { BASE_URL } from "../../../utils/BaseUrl";
 
 const Reviews = () => {
   const [allReviews, setAllReviews] = useState({});
   useEffect(() => {
-    axios
-      .get("https://www.api.kamrul.pro/reviews")
-      .then((res) => setAllReviews(res.data));
+    axios.get(`${BASE_URL}/reviews`).then((res) => setAllReviews(res.data));
   }, []);
 
   return (

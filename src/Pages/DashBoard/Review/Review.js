@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { Row } from "react-bootstrap";
 import useAuth from "../../../hooks/useAuth";
+import { BASE_URL } from "../../../utils/BaseUrl";
 
 const Review = () => {
   const { user } = useAuth();
@@ -21,7 +22,7 @@ const Review = () => {
   const handleReviewsToServer = () => {
     handleReviewModelClose();
     console.log(newReview);
-    axios.post("https://www.api.kamrul.pro/reviews", newReview).then((res) => {
+    axios.post(`${BASE_URL}/reviews`, newReview).then((res) => {
       if (res.data.insertedId) {
         alert("Congrats Your review has been added successfully.");
       }

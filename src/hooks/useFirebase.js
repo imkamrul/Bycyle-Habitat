@@ -11,6 +11,7 @@ import {
 } from "firebase/auth";
 import { useEffect, useState } from "react";
 import initializeAuthentication from "../Firebase/Firebase.init";
+import { BASE_URL } from "../utils/BaseUrl";
 initializeAuthentication();
 const useFirebase = () => {
   const [user, setUser] = useState({});
@@ -77,14 +78,14 @@ const useFirebase = () => {
   const saveUserPost = (email, displayName) => {
     const user = { email, displayName };
     axios
-      .post("https://www.api.kamrul.pro/users", user)
+      .post(`${BASE_URL}/users`, user)
 
       .then();
   };
   const saveUserPut = (email, displayName) => {
     const user = { email, displayName };
     axios
-      .put("https://www.api.kamrul.pro/users", user)
+      .put(`${BASE_URL}/users`, user)
 
       .then();
   };
@@ -102,7 +103,7 @@ const useFirebase = () => {
   }, [auth]);
   useEffect(() => {
     axios
-      .get(`https://www.api.kamrul.pro/users/${user.email}`)
+      .get(`${BASE_URL}/users/${user.email}`)
 
       .then((res) => setAdmin(res.data.admin));
   }, [user.email]);

@@ -4,6 +4,7 @@ import { Button, Col, Container, Modal, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../hooks/useAuth";
 
+import { BASE_URL } from "../../../utils/BaseUrl";
 import "./AddProduct.css";
 const AddProduct = () => {
   const { user } = useAuth();
@@ -20,13 +21,11 @@ const AddProduct = () => {
   const handleProductToServer = () => {
     handleProductModelClose();
 
-    axios
-      .post("https://www.api.kamrul.pro/products", newProduct)
-      .then((res) => {
-        if (res.data.insertedId) {
-          alert("Congrats Your Product has been added successfully.");
-        }
-      });
+    axios.post(`${BASE_URL}/products`, newProduct).then((res) => {
+      if (res.data.insertedId) {
+        alert("Congrats Your Product has been added successfully.");
+      }
+    });
   };
 
   return (
