@@ -25,18 +25,44 @@ const Products = () => {
   const handleCyclePage = () => {
     history.push("/cycles");
   };
+
+  const [filterData, setFilterData] = useState([])
+  useEffect(() => {
+    setFilterData(allProducts)
+  }, [
+    allProducts
+  ])
+const [searchName,setSearchName]= useState("")
+const handleSearch= ()=>{
+  const  result = allProducts?.filter((item)=> item?.name.toLowerCase().includes(searchName?.toLowerCase()))
+  setFilterData(result)
+  
+}
   return (
     <Container className="my-5">
       <Row>
-        <Col>
+        <Col sm={12}>
           <h4 className="fs-3 my-3">
             FEATURED <span className="text-warning">PRODUCTS</span>
           </h4>
         </Col>
+        <Col sm={12} md={6} className="mx-auto">
+          <div class="input-group mb-3 col-6 mx-auto" >
+            <input type="text"
+          
+            onChange={(e)=>{setSearchName(e.target.value)}}
+            class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2" />
+            <div
+            role="button"
+            class="input-group-append" onClick={()=>handleSearch()}>
+              <span class="input-group-text" id="basic-addon2">Search</span>
+            </div>
+          </div>
+        </Col>
       </Row>
       <Row xs={1} md={3} className="g-4">
-        {allProducts.length ? (
-          allProducts.map((product) => (
+        {filterData.length ? (
+          filterData.map((product) => (
             <Col key={product._id}>
               <Card className="bg-light product-background">
                 <Card.Img
