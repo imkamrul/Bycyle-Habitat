@@ -158,11 +158,7 @@ const MyOrders = () => {
               <hr className="my-2" />
               <p className="mb-0">Total : $ {total.toFixed(2)}</p>
               <hr className="my-2" />
-              <div className="text-end">
-                <Button variant="success" onClick={paymentPage}>
-                  Payment
-                </Button>
-              </div>
+           
             </Col>
           </Row>
         </Col>

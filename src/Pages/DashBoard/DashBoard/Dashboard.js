@@ -35,7 +35,7 @@ const Dashboard = () => {
                         {!admin ? <>
 
                             <Link to={`${url}`}> <span><i className="fas fa-shopping-bag me-2"></i></span> My Orders</Link>
-                            <Link to={`${url}/pay`}> <span><i className="fab fa-cc-amazon-pay me-2"></i></span> Payment</Link>
+
                             <Link to={`${url}/review`}> <span><i className="fas fa-star-half-alt me-2"></i></span> Review</Link>
                         </>
                             :
@@ -83,9 +83,7 @@ const Dashboard = () => {
                         <AdminRoute path={`${path}/addProduct`}>
                             <AddProduct />
                         </AdminRoute>
-                        <AdminRoute path={`${path}/makeAdmin`}>
-                            <MakeAdmin />
-                        </AdminRoute>
+                     
                         <AdminRoute path={`${path}/manageProducts`}>
                             <ManageProduct />
                         </AdminRoute>
