@@ -1,3 +1,3 @@
 module.exports = {
-  BASE_URL: "https://bycylce-habitat-server.vercel.app",
+  BASE_URL: "http://localhost:5000",
 };

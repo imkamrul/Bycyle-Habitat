@@ -34,17 +34,25 @@ const ProductBuy = () => {
       .get(`${BASE_URL}/selectedProduct/${id}`)
       .then((res) => setSelectedProduct(res.data));
   }, [id]);
-  const handleReviewsToServer = () => {
+  const handleReviewsToServer = async() => {
     handleProductBuyModalClose();
+   try {
+    const response = await fetch(`${BASE_URL}/orders`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+        },
+        body: JSON.stringify(BuyingProduct)
+      });
+      const data = await response.json();
+      console.log("tst",data)
+      history.push(data)
+      window.location.replace(data);
+   } catch (error) {
+    alert("try again");
+   }
 
-    axios.post(`${BASE_URL}/orders`, BuyingProduct).then((res) => {
-      if (res.data.insertedId) {
-        alert("Congrats Your order has been added successfully.");
-        if (!admin) {
-          history.push("/dashboard");
-        } else history.push("/home");
-      }
-    });
   };
   return (
     <div>
